@@ -1,0 +1,31 @@
+Part 1
+-	Activity A, which contains:
+	-	Input field
+		- Must specify the seconds for service alarm triggering
+	-	Button 
+		- 	When the button is pressed Activity A should start a Service.
+- 	The Service, does the following:
+	-	Sets an alarm using the AlarmManager
+		-	Done with a PendingIntent. 
+		-	The alarm must be triggered after the amount of seconds specified in the input field in Activity A. 
+		-	When the alarm is triggered, a BroadcastReceiver must be notified.
+-	The BroadcastReceiver, does the following:
+	-	Receives the notification, and starts Activity B.
+
+Notes:
+-	Write to the log for every lifecycle event, like OnReceive, OnPause, etc.
+-	Try to make the number keys appear by default, when the input field in Activity A is pressed.
+-	Try to pass a message from Activity A, to be displayed in Activity B.
+
+Part 2
+-	Messaging from Service to Activity 
+-	When the service has set the alarm, it also starts counting down the seconds until the alarm goes off. 
+	-	The Service sends updates of the countdown to Activity A.
+		- 	Using Intents and a BroadcastReceiver in Activity A. 
+		-	The updates are presented to the user
+			-	Either using Toasts or a ProgressBar. 
+			-	You may use Local Broadcast in the App
+
+Notes part 2:
+-	Notice what happens if the countdown takes longer than 5 seconds. 
+-	Research how this could be avoided.
