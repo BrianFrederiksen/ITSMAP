@@ -5,8 +5,49 @@
     tools:context="${packageName}.${activityClass}">
 
     <TextView
-        android:text="BAAAAAAAAAAAAM  !!!!!!!!!!!!!!!!!!"
+        android:text="ACTIVITY ONE"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:textSize="50sp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/textView" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Alarm time"
+        android:id="@+id/textView2"
+        android:layout_marginTop="87dp"
+        android:textSize="30sp"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/editText"
+        android:layout_below="@+id/textView2"
+        android:layout_alignLeft="@+id/textView2"
+        android:layout_alignStart="@+id/textView2"
+        android:layout_alignRight="@+id/textView2"
+        android:layout_alignEnd="@+id/textView2"
+        android:textSize="30sp"
+        android:textAlignment="center"
+        android:hint="..."/>
+
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Start"
+        android:id="@+id/button"
+        android:layout_below="@+id/editText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="74dp"
+        android:textSize="30sp"/>
 
 </RelativeLayout>
