@@ -16,6 +16,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="dk.iha.itsmap.grp11662.handin2.app.ActivityTwo"
+            android:label="@string/title_activity_activity_two" >
+        </activity>
     </application>
 
 </manifest>
