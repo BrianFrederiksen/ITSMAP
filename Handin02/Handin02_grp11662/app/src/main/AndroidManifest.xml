@@ -22,6 +22,16 @@
             android:enabled="true"
             android:exported="false" >
         </receiver>
+        <activity
+            android:name="dk.iha.itsmap.grp11662.handin2.app.ActivityTwo"
+            android:label="@string/title_activity_activity_two" >
+        </activity>
+
+        <service
+            android:name="dk.iha.itsmap.grp11662.handin2.app.ServiceAlarm"
+            android:enabled="true"
+            android:exported="true" >
+        </service>
     </application>
 
 </manifest>
