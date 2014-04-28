@@ -1,13 +1,16 @@
 package dk.iha.itsmap.grp11662.handin2.app;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
 
 import org.apache.http.protocol.HTTP;
+
+import static android.app.PendingIntent.*;
 
 public class AlarmBroadcastReceiver extends BroadcastReceiver {
 
@@ -30,6 +33,11 @@ public class AlarmBroadcastReceiver extends BroadcastReceiver {
         {
             if(extras.containsKey("notification"))
             {
+                //Kill countdown alarm
+                Intent countdownIntent = new Intent(ActivityOne.COUNTDOWN_NOTIFICATION);
+                PendingIntent countdownPendingIntent = getBroadcast(context, FLAG_UPDATE_CURRENT, countdownIntent, FLAG_UPDATE_CURRENT);
+                AlarmManager alarmManager = (AlarmManager) context.getSystemService(context.ALARM_SERVICE);
+                alarmManager.cancel(countdownPendingIntent);
 
                 //Get app context
                 Context appContext = context.getApplicationContext();

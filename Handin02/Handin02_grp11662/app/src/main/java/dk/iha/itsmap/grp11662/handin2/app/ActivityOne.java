@@ -22,8 +22,14 @@ public class ActivityOne extends Activity {
     BroadcastReceiver countdownReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            EditText editText = (EditText) ActivityOne.this.findViewById(R.id.editText);
-            editText.setText((CharSequence) intent.getExtras().get("countdown"));
+            try {
+                EditText editText = (EditText) findViewById(R.id.editText);
+                Integer beforeTime = Integer.parseInt(editText.getText().toString());
+                Integer afterTime = beforeTime - 1;
+                editText.setText(afterTime.toString());
+            } catch (Exception e) {
+                Log.e("Exception occurred",e.getMessage());
+            }
         }
     };
 
@@ -48,9 +54,26 @@ public class ActivityOne extends Activity {
     @Override
     protected void onPause() {
         super.onPause();
-        Log.i(STATE_TAG,"onPause");
+        Log.i(STATE_TAG, "onPause");
 
         unregisterReceiver(countdownReceiver);
+
+        //Enable UI Interaction if countdown is done
+        Button button = (Button) findViewById(R.id.button);
+        EditText editText = (EditText) findViewById(R.id.editText);
+        try {
+            if (Integer.parseInt(editText.getText().toString()) <= 0) {
+                button.setClickable(true);
+                button.setActivated(true);
+                editText.setFocusable(true);
+                editText.setSelectAllOnFocus(true);
+                editText.setEnabled(true);
+                editText.requestFocus();
+            }
+        } catch (Exception e) {
+            Log.e("Exception caught", e.getMessage());
+        }
+
     }
 
     private void setupButton(final Button button, final EditText editText) {
@@ -58,17 +81,22 @@ public class ActivityOne extends Activity {
             @Override
             public void onClick(View v) {
                 Log.i(BUTTON_TAG, "OnClick, start ServiceAlarm");
-                Intent serviceIntent = new Intent();
-                serviceIntent.setAction("dk.iha.itsmap.grp11662.handin2.app.ServiceAlarm");
-                serviceIntent.putExtra("alarmtime", editText.getText());
-                serviceIntent.putExtra("notification","Notification data from ActivityOne");
-                startService(serviceIntent);
+                try {
+                    Intent serviceIntent = new Intent(v.getContext(), ServiceAlarm.class);
+                    serviceIntent.putExtra("alarmtime", editText.getText().toString());
+                    serviceIntent.putExtra("notification","Notification data from ActivityOne");
+                    startService(serviceIntent);
 
-                //Disable UI interaction
-                button.setClickable(false);
-                button.setActivated(false);
-                editText.setFocusable(false);
+                    //Disable UI interaction
+                    button.setClickable(false);
+                    button.setActivated(false);
+                    editText.setFocusable(false);
+
+                } catch (Exception e) {
+                    //DO NOTHING
+                }
             }
         });
     }
+
 }
