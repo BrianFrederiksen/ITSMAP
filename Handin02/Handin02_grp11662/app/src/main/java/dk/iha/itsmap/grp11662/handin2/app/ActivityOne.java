@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 
 
 public class ActivityOne extends Activity {
@@ -27,6 +28,8 @@ public class ActivityOne extends Activity {
                 Integer beforeTime = Integer.parseInt(editText.getText().toString());
                 Integer afterTime = beforeTime - 1;
                 editText.setText(afterTime.toString());
+                ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
+                progressBar.setProgress(afterTime);
             } catch (Exception e) {
                 Log.e("Exception occurred",e.getMessage());
             }
@@ -48,10 +51,10 @@ public class ActivityOne extends Activity {
         super.onResume();
         Log.i(STATE_TAG, "onResume");
 
-
         //Enable UI Interaction if countdown is done
         Button button = (Button) findViewById(R.id.button);
         EditText editText = (EditText) findViewById(R.id.editText);
+        ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
         try {
             if (Integer.parseInt(editText.getText().toString()) <= 0) {
                 button.setClickable(true);
@@ -60,6 +63,7 @@ public class ActivityOne extends Activity {
                 editText.setSelectAllOnFocus(true);
                 editText.setEnabled(true);
                 editText.requestFocus();
+                progressBar.setVisibility(View.INVISIBLE);
             }
         } catch (Exception e) {
             Log.e("Exception caught", e.getMessage());
@@ -91,6 +95,10 @@ public class ActivityOne extends Activity {
                     button.setClickable(false);
                     button.setActivated(false);
                     editText.setFocusable(false);
+
+                    ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
+                    progressBar.setVisibility(View.VISIBLE);
+                    progressBar.setMax(Integer.parseInt(editText.getText().toString()));
 
                 } catch (Exception e) {
                     //DO NOTHING
