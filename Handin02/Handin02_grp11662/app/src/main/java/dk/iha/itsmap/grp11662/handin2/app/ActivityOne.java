@@ -48,15 +48,6 @@ public class ActivityOne extends Activity {
         super.onResume();
         Log.i(STATE_TAG, "onResume");
 
-        registerReceiver(countdownReceiver,new IntentFilter(COUNTDOWN_NOTIFICATION));
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Log.i(STATE_TAG, "onPause");
-
-        unregisterReceiver(countdownReceiver);
 
         //Enable UI Interaction if countdown is done
         Button button = (Button) findViewById(R.id.button);
@@ -74,6 +65,15 @@ public class ActivityOne extends Activity {
             Log.e("Exception caught", e.getMessage());
         }
 
+        registerReceiver(countdownReceiver,new IntentFilter(COUNTDOWN_NOTIFICATION));
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.i(STATE_TAG, "onPause");
+
+        unregisterReceiver(countdownReceiver);
     }
 
     private void setupButton(final Button button, final EditText editText) {
