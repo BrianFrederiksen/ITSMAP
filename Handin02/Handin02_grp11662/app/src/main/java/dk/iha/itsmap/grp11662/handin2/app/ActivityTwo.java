@@ -1,17 +1,49 @@
 package dk.iha.itsmap.grp11662.handin2.app;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 
 public class ActivityTwo extends Activity {
+
+    private final String TAG = "State Changed";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_two);
+        Log.i(TAG,"Running method onCreate");
+        int ToastDuration = Toast.LENGTH_SHORT;
+
+        Log.i(TAG,"Getting application context");
+        Context context = getApplicationContext();
+
+        Log.i(TAG,"Getting intent extras");
+        Bundle extras = getIntent().getExtras();
+        if(extras == null){
+            Log.i(TAG,"value of extras was null - returning");
+            return;
+        }
+
+        String ToastToDisplay = extras.getString("notification");
+        if(ToastToDisplay != null)
+        {
+            Log.i(TAG,"Creating Toast");
+            Toast toast = Toast.makeText(context,ToastToDisplay,ToastDuration);
+            toast.show();
+        }
+
+
+
+
+
+
+
     }
 
 

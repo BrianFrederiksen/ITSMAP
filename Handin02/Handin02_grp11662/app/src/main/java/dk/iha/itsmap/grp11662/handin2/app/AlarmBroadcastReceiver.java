@@ -30,6 +30,7 @@ public class AlarmBroadcastReceiver extends BroadcastReceiver {
         {
             if(extras.containsKey("notification"))
             {
+
                 //Get app context
                 Context appContext = context.getApplicationContext();
 
