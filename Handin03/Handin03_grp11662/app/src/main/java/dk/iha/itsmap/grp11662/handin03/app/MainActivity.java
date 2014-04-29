@@ -2,8 +2,6 @@ package dk.iha.itsmap.grp11662.handin03.app;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 
 public class MainActivity extends Activity {
 

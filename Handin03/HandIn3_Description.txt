@@ -1,17 +1,16 @@
 Part 1 - Set up
 
-	- Handset running 2.3.3 API(10)
-	- Tablet running 4.4.2 API(19)
+	x Handset running 2.3.3 API(10)
+	x Tablet running 4.4.2 API(19)
 	- Application needs to be tested on both devices
 	
 Part 2 - Using Fragments
-
-	- use support libraries 
-	- Project starts with one activity called "MainActivity"
-		- The layout of the MainActivity needs to be "MenuFragment"
+	x use support libraries 
+	x Project starts with one activity called "MainActivity"
+		x The layout of the MainActivity needs to be "MenuFragment"
 		
-	- Create a Fragment class called "MenuFragment
-		- Import correct Fragment (android.support.v4.app.Fragment)
+	x Create a Fragment class called "MenuFragment
+		x Import correct Fragment (android.support.v4.app.Fragment)
 		- Add its own layout to the fragment
 		- Add a TextView with e.g "Please select from the menu
 		- Add a ListView and put in e.g "what you want shop items"
