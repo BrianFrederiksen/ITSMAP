@@ -4,9 +4,10 @@
     android:layout_height="match_parent"
     tools:context="${packageName}.${activityClass}">
 
-    <TextView
-        android:text="@string/hello_world"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        <fragment
+            android:name="dk.iha.itsmap.grp11662.handin03.app.MenuFragment"
+            android:id="@+id/fragment_menu"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"/>
 
 </RelativeLayout>
