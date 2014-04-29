@@ -1,0 +1,39 @@
+Part 1 - Set up
+
+	- Handset running 2.3.3 API(10)
+	- Tablet running 4.4.2 API(19)
+	- Application needs to be tested on both devices
+	
+Part 2 - Using Fragments
+
+	- use support libraries 
+	- Project starts with one activity called "MainActivity"
+		- The layout of the MainActivity needs to be "MenuFragment"
+		
+	- Create a Fragment class called "MenuFragment
+		- Import correct Fragment (android.support.v4.app.Fragment)
+		- Add its own layout to the fragment
+		- Add a TextView with e.g "Please select from the menu
+		- Add a ListView and put in e.g "what you want shop items"
+			- Implement Click functionality to the items in the ListView
+			- MainActivity should handle the item clicked events
+			-
+	- Create new activity called "ContentActivity"
+		-The layout of "ContentActivity needs to be the "ContentFragment"
+	
+	- Create new fragment called "ContentFragment"
+		-The fragment should at least contain a TextView
+			The TextView should display details about the item clicked
+			
+	- Make sure it runs on both devices
+	
+Part 3 - Tablet experience
+
+	- Add the "ContentFragment" to "MainActivity"'s layout
+	- This layout should now contain to fragment nodes
+	
+	- Make sure it runs on both devices
+
+Part 4 - Different behavior according to different screen sizes
+
+	-TO BE DONE
