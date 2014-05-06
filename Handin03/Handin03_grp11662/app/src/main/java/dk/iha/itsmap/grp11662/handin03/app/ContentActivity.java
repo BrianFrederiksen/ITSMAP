@@ -1,12 +1,12 @@
 package dk.iha.itsmap.grp11662.handin03.app;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
 
-public class ContentActivity extends ActionBarActivity {
+public class ContentActivity extends FragmentActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
