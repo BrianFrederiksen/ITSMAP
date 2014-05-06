@@ -9,7 +9,7 @@ Part 2 - Using Fragments
 	x Project starts with one activity called "MainActivity"
 		x The layout of the MainActivity needs to be "MenuFragment"
 		
-	x Create a Fragment class called "MenuFragment
+	x (Stephan)Create a Fragment class called "MenuFragment
 		x Import correct Fragment (android.support.v4.app.Fragment)
 		- Add its own layout to the fragment
 		- Add a TextView with e.g "Please select from the menu
@@ -17,10 +17,10 @@ Part 2 - Using Fragments
 			- Implement Click functionality to the items in the ListView
 			- MainActivity should handle the item clicked events
 			-
-	- Create new activity called "ContentActivity"
+	- (Brian & Dan)Create new activity called "ContentActivity"
 		-The layout of "ContentActivity needs to be the "ContentFragment"
 	
-	- Create new fragment called "ContentFragment"
+	- (Brian & Dan)CCreate new fragment called "ContentFragment"
 		-The fragment should at least contain a TextView
 			The TextView should display details about the item clicked
 			
