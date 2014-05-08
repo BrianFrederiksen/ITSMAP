@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 //How to use: intent.putExtra("student", new Student("1","Mike","6"));
-public class AndroidVersions implements Parcelable {
+public class AndroidVersion implements Parcelable {
 
     private int mData;
 
@@ -12,13 +12,13 @@ public class AndroidVersions implements Parcelable {
     private String version;
     private String description;
 
-    public AndroidVersions(String codeName, String version, String description) {
+    public AndroidVersion(String codeName, String version, String description) {
         this.codeName = codeName;
         this.version = version;
         this.description = description;
     }
 
-    public AndroidVersions(Parcel in) {
+    public AndroidVersion(Parcel in) {
         String[] data = new String[3];
         in.readStringArray(data);
         this.codeName = data[0];
@@ -60,15 +60,15 @@ public class AndroidVersions implements Parcelable {
         parcel.writeStringArray(new String[]{this.codeName, this.version, this.description});
     }
 
-    public static final Parcelable.Creator<AndroidVersions> CREATOR
-            = new Parcelable.Creator<AndroidVersions>() {
-        public AndroidVersions createFromParcel(Parcel in) {
-            return new AndroidVersions(in);
+    public static final Parcelable.Creator<AndroidVersion> CREATOR
+            = new Parcelable.Creator<AndroidVersion>() {
+        public AndroidVersion createFromParcel(Parcel in) {
+            return new AndroidVersion(in);
         }
 
         //@Override
-        public AndroidVersions[] newArray(int size) {
-            return new AndroidVersions[size];
+        public AndroidVersion[] newArray(int size) {
+            return new AndroidVersion[size];
         }
     };
 
