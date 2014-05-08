@@ -4,5 +4,6 @@
     <string name="app_name">Handin03</string>
     <string name="hello_world">Hello world!</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="fragmentmenu_choice_invite">Choose from menu below</string>
 
 </resources>
