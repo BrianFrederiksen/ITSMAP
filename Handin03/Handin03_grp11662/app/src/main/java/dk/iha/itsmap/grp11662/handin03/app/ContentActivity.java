@@ -1,5 +1,6 @@
 package dk.iha.itsmap.grp11662.handin03.app;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
@@ -36,14 +37,19 @@ public class ContentActivity extends FragmentActivity {
         return super.onOptionsItemSelected(item);
     }
 
-     public void SetDetails(View v){
-         AndroidVersion av = new AndroidVersion("kitkat","version 4.4","dumdum");
-         EditText codeName = (EditText)findViewById(R.id.codeName);
-         EditText version = (EditText)findViewById(R.id.version);
-         EditText description = (EditText)findViewById(R.id.description);
+    public void SetDetails(View v) {
 
-         codeName.setText(av.getCodeName());
-         version.setText(av.getVersion());
-         description.setText(av.getDescription());
-     }
+        AndroidVersion av = new AndroidVersion("kitkat", "version 4.4", "dumdum");
+
+        //bundle
+        Bundle extra = new Bundle();
+        extra.putParcelable("data", av);
+
+        //fragment put data into fragment
+        ContentFragment contentFragment = new ContentFragment();
+        contentFragment.setArguments(extra);
+        //startActivity(new Intent(this, ContentFragment.class));
+
+
+    }
 }
