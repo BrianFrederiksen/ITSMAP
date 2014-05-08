@@ -16,6 +16,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="dk.iha.itsmap.grp11662.handin03.app.ContentActivity"
+            android:label="@string/title_activity_content" >
+        </activity>
     </application>
 
 </manifest>
