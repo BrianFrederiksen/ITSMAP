@@ -37,8 +37,13 @@ public class ContentActivity extends FragmentActivity {
     }
 
      public void SetDetails(View v){
-       EditText codeName = new EditText(this);
-         codeName=(EditText)findViewById(R.id.codeName);
-     codeName.setText("CodeName Gordon");
+         AndroidVersion av = new AndroidVersion("kitkat","version 4.4","dumdum");
+         EditText codeName = (EditText)findViewById(R.id.codeName);
+         EditText version = (EditText)findViewById(R.id.version);
+         EditText description = (EditText)findViewById(R.id.description);
+
+         codeName.setText(av.getCodeName());
+         version.setText(av.getVersion());
+         description.setText(av.getDescription());
      }
 }
