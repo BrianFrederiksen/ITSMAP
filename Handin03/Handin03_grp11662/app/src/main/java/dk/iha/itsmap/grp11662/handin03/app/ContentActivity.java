@@ -3,6 +3,8 @@ package dk.iha.itsmap.grp11662.handin03.app;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,6 +17,14 @@ public class ContentActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_content);
+
+        if (savedInstanceState == null && getIntent().getExtras().containsKey("data")) {
+            Bundle arguments = new Bundle();
+            arguments.putParcelable("data",(AndroidVersion) getIntent().getExtras().get("data"));
+            ContentFragment contentFragment = new ContentFragment();
+            contentFragment.setArguments(arguments);
+            getSupportFragmentManager().beginTransaction().add(R.id.content_container,contentFragment).commit();
+        }
     }
 
 

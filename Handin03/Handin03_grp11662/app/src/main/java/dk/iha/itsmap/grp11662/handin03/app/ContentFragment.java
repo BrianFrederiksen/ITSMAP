@@ -9,21 +9,37 @@ import android.widget.EditText;
 
 public class ContentFragment extends Fragment{
 
+    private AndroidVersion itemWithDetail;
+
+    public ContentFragment() {}
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        if (getArguments().containsKey("data")) {
+            itemWithDetail = getArguments().getParcelable("data");
+        }
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
-
-        AndroidVersion itemWithDetail = null;
-        //itemWithDetail = savedInstanceState.getParcelable("data");
-        //itemWithDetail = getArguments().getParcelable("data");
+        View rootView = inflater.inflate(R.layout.fragment_content, container, false);
 
         if(itemWithDetail != null)
         {
-            ((EditText) getActivity().findViewById(R.id.codeName)).setText(itemWithDetail.getCodeName());
-            ((EditText) getActivity().findViewById(R.id.version)).setText(itemWithDetail.getVersion());
-            ((EditText) getActivity().findViewById(R.id.description)).setText(itemWithDetail.getDescription());
+            ((EditText) rootView.findViewById(R.id.codeName)).setText(itemWithDetail.getCodeName());
+            ((EditText) rootView.findViewById(R.id.version)).setText(itemWithDetail.getVersion());
+            ((EditText) rootView.findViewById(R.id.description)).setText(itemWithDetail.getDescription());
         }
-        return inflater.inflate(R.layout.fragment_content, container, false);
+        return rootView;
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+
     }
 
     @Override

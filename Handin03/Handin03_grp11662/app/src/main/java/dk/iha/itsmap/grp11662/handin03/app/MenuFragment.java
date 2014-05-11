@@ -36,16 +36,17 @@ public class MenuFragment extends Fragment  {
                 AndroidVersion androidVersion = (AndroidVersion) choiceMenuList.getItemAtPosition(position);
                 Toast.makeText(getActivity(),androidVersion.getCodeName(),Toast.LENGTH_SHORT).show();
 
+                Bundle arguments = new Bundle();
+                arguments.putParcelable("data", androidVersion);
+
                 if (isTwoPane) {
-                    Bundle arguments = new Bundle();
-                    arguments.putParcelable("data", androidVersion);
                     ContentFragment contentFragment = new ContentFragment();
                     contentFragment.setArguments(arguments);
                     getFragmentManager().beginTransaction().
                             replace(R.id.content_container, contentFragment).commit();
                 } else {
                     Intent contentIntent = new Intent(getActivity(), ContentActivity.class);
-                    contentIntent.putExtra("data", androidVersion);
+                    contentIntent.putExtras(arguments);
                     startActivity(contentIntent);
                 }
 
