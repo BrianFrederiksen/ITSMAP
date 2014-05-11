@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,12 +16,16 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 
-public class MenuFragment extends Fragment {
+public class MenuFragment extends Fragment  {
 
-
+    private boolean isTwoPane = false;
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
+        if (getActivity().findViewById(R.id.content_container) != null) {
+            isTwoPane = true;
+        }
+
         final ListView choiceMenuList = (ListView) getActivity().findViewById(R.id.choice_menu_list);
         final ArrayList<AndroidVersion> list = getAndroidVersList();
         choiceMenuList.setAdapter(new AndroidVersionArrayAdapter(getActivity(), list));
@@ -31,10 +36,19 @@ public class MenuFragment extends Fragment {
                 AndroidVersion androidVersion = (AndroidVersion) choiceMenuList.getItemAtPosition(position);
                 Toast.makeText(getActivity(),androidVersion.getCodeName(),Toast.LENGTH_SHORT).show();
 
-                //TODO : Add possibility for tablet layout
-                Intent contentIntent = new Intent(getActivity(), ContentActivity.class);
-                contentIntent.putExtra("data", androidVersion);
-                startActivity(contentIntent);
+                if (isTwoPane) {
+                    Bundle arguments = new Bundle();
+                    arguments.putParcelable("data", androidVersion);
+                    ContentFragment contentFragment = new ContentFragment();
+                    contentFragment.setArguments(arguments);
+                    getFragmentManager().beginTransaction().
+                            replace(R.id.content_container, contentFragment).commit();
+                } else {
+                    Intent contentIntent = new Intent(getActivity(), ContentActivity.class);
+                    contentIntent.putExtra("data", androidVersion);
+                    startActivity(contentIntent);
+                }
+
 
             }
         });
@@ -62,4 +76,6 @@ public class MenuFragment extends Fragment {
 
         return arrayList;
     };
+
+
 }

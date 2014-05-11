@@ -13,8 +13,9 @@ public class ContentFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
 
-        AndroidVersion itemWithDetail;
-        itemWithDetail = savedInstanceState.getParcelable("data");
+        AndroidVersion itemWithDetail = null;
+        //itemWithDetail = savedInstanceState.getParcelable("data");
+        //itemWithDetail = getArguments().getParcelable("data");
 
         if(itemWithDetail != null)
         {
