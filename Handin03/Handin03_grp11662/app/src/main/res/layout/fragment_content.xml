@@ -29,10 +29,6 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:hint="Description"/>
-        <Button
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:onClick="SetDetails"/>
 
     </LinearLayout>
 
