@@ -1,14 +1,9 @@
 package dk.iha.itsmap.grp11662.handin03.app;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.EditText;
 
 
 public class ContentActivity extends FragmentActivity {
@@ -45,21 +40,5 @@ public class ContentActivity extends FragmentActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    public void SetDetails(View v) {
-
-        AndroidVersion av = new AndroidVersion("kitkat", "version 4.4", "dumdum");
-
-        //bundle
-        Bundle extra = new Bundle();
-        extra.putParcelable("data", av);
-
-        //fragment put data into fragment
-        ContentFragment contentFragment = new ContentFragment();
-        contentFragment.setArguments(extra);
-        //startActivity(new Intent(this, ContentFragment.class));
-
-
     }
 }
