@@ -1,7 +1,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="dk.iha.itsmap.grp11662.telecare.app.DashActivity" >
+    tools:context="dk.iha.itsmap.grp11662.telecare.app.MainActivity" >
     <item android:id="@+id/action_example"
         android:title="@string/action_example"
         android:showAsAction="withText|ifRoom" />
