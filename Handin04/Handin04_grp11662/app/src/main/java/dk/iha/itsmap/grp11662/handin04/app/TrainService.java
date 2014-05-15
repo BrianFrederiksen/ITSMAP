@@ -1,5 +1,6 @@
 package dk.iha.itsmap.grp11662.handin04.app;
 
+import android.app.Activity;
 import android.app.Service;
 import android.content.Intent;
 import android.os.Binder;
@@ -15,12 +16,17 @@ public class TrainService extends Service {
 
     }
 
+    public void GetStations(Activity mainActivity){
+        RestAccess restAccess = new RestAccess(mainActivity);
+        restAccess.getTrainStations().execute("http://stog.itog.dk/itog/action/list/format/json");
+
+    }
+
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.i("State changed", "TrainService: onStartCommand()");
         Toast.makeText(getApplicationContext(), "TOASTY", Toast.LENGTH_LONG).show();
-        //RestAccess restAccess = new RestAccess(intent.getAction());
-        //restAccess.getTrainStations().execute("http://stog.itog.dk/itog/action/list/format/json");
+
 
         return super.onStartCommand(intent, flags, startId);
     }
