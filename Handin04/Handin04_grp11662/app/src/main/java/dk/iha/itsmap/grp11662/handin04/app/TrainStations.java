@@ -79,22 +79,20 @@ public class TrainStations extends AsyncTask<String, Void, String> {
     protected void onPostExecute(String result) {
         Log.i("Function started", "void onPostExecute(String result)");
         Toast.makeText(restAccessInstance.GetActivity().getBaseContext(), "Received!", Toast.LENGTH_LONG).show();
-        ArrayList<Train> trains = new ArrayList<Train>();
 
-
+        ArrayList<String> trains = new ArrayList<String>();
         try {
             JSONArray jsonArray = new JSONArray(result);
 
-
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject curr = jsonArray.getJSONObject(i);
-                Train train = new Train();
+                /*Train train = new Train();
                 train.setName(curr.getString("name"));
                 train.setWid(curr.getString("wid"));
                 train.setX(curr.getString("x"));
-                train.setY(curr.getString("y"));
+                train.setY(curr.getString("y"));*/
 
-                trains.add(train);
+                trains.add(curr.getString("name"));
             }
 
         } catch (JSONException e) {
@@ -102,7 +100,7 @@ public class TrainStations extends AsyncTask<String, Void, String> {
         }
 
         ListView resultListView = (ListView) restAccessInstance.GetActivity().findViewById(R.id.listView);
-        ArrayAdapter<Train> arrayAdapter = new ArrayAdapter<>(restAccessInstance.GetActivity(), android.R.layout.simple_list_item_1, trains);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(restAccessInstance.GetActivity(), android.R.layout.simple_list_item_1, trains);
         resultListView.setAdapter(arrayAdapter);
     }
 }
