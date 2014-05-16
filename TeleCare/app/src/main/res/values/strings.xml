@@ -8,13 +8,15 @@
     <string name="action_settings">Settings</string>
 
     <string-array name="nav_drawer_items">
-        <item >Dashboard</item>
-        <item >Profile</item>
-        <item >My Measurements</item>
-        <item >Call Doctor</item>
-        <item >Settings</item>
-        <item >Help</item>
-        <item >About</item>
+        <item>Dashboard</item>
+        <item>Profile</item>
+        <item>My Measurements</item>
+        <item>Call Doctor</item>
+        <item>Settings</item>
+        <item>Help</item>
+        <item>About</item>
     </string-array>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
