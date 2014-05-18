@@ -109,6 +109,19 @@ public class Measurement implements Parcelable, Serializable {
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
-
+        parcel.writeStringArray(new String[]{this.weight, this.temperature, this.dBP,
+                this.sBP, this.bloodGlucose, this.comments, this.date});
     }
+
+    public static final Parcelable.Creator<Measurement> MEASUREMENT_CREATOR = new Parcelable.Creator<Measurement>() {
+        public Measurement createFromParcel(Parcel in){
+        return new Measurement(in);}
+
+        @Override
+        public Measurement[] newArray(int size) {
+            return new Measurement[size];
+        }
+    };
+
+
 }
