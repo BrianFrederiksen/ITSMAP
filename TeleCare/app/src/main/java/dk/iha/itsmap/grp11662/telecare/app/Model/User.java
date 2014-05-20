@@ -1,4 +1,4 @@
-package dk.iha.itsmap.grp11662.telecare.app;
+package dk.iha.itsmap.grp11662.telecare.app.Model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
