@@ -10,7 +10,7 @@ import java.io.Serializable;
 public class Measurement implements Parcelable, Serializable {
 
     //class variables
-     private String weight;
+    private String weight;
     private String temperature;
     private String bloodGlucose;
     private String dBP;

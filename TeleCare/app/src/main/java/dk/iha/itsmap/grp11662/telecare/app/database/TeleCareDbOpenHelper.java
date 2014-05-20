@@ -5,7 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-public class TeleCareDbOpenHelper123 extends SQLiteOpenHelper {
+public class TeleCareDbOpenHelper extends SQLiteOpenHelper {
 
     private static final String LOGTAG_DB = "Database: ";
 
@@ -57,7 +57,7 @@ public class TeleCareDbOpenHelper123 extends SQLiteOpenHelper {
 
 
     //Constructors
-    public TeleCareDbOpenHelper123(Context context) {
+    public TeleCareDbOpenHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
 
     }
