@@ -77,7 +77,7 @@ public class Measurement implements Parcelable, Serializable {
     }
 
     //Constructors
-    public Measurement(String Weight, String Temperature,String BloodGlucose, String DBP, String SBP, String Comments, String Date){
+    public Measurement(String Weight, String Temperature, String BloodGlucose, String DBP, String SBP, String Comments, String Date){
 
         this.weight = Weight;
         this.temperature = Temperature;
