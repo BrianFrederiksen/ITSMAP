@@ -14,7 +14,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:id="@+id/lnlData">
 
             <EditText
                 android:layout_width="fill_parent"
@@ -44,6 +45,12 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number"
+                android:id="@+id/etxSugar"
+                android:text="Type Sugar levels"/>
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
                 android:id="@+id/etxComments"
                 android:text="Comments..." />
 
@@ -58,32 +65,37 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text="kg"
-                android:textSize="25sp"/>
+                android:textSize="25sp"
+                android:id="@+id/txvWeight"/>
 
             <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text="Celsius"
-                android:textSize="25sp"/>
+                android:textSize="25sp"
+                android:id="@+id/txvTemp"/>
 
             <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text="mm Hg"
-                android:textSize="25sp"/>
+                android:textSize="25sp"
+                android:id="@+id/txvDBP"/>
 
             <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text="mm Hg"
-                android:textSize="25sp"/>
+                android:textSize="25sp"
+                android:id="@+id/txvSBP"/>
+
             <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text="m mol/L"
-                android:textSize="25sp"/>
+                android:textSize="25sp"
+                android:id="@+id/txvSugar"/>
 
         </LinearLayout>
-
     </LinearLayout>
 </FrameLayout>
