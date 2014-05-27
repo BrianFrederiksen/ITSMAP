@@ -15,6 +15,14 @@ public class User implements Parcelable, Serializable {
     private String surname;
     private String password;
 
+    public String getUsername() {
+        return username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
     @Override
     public int describeContents() {
         return 0;
