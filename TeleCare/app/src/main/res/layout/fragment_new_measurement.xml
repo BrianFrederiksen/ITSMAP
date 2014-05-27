@@ -36,7 +36,8 @@
                 android:layout_height="wrap_content"
                 android:inputType="number"
                 android:layout_toLeftOf="@id/txvWeightUnit"
-                android:hint="Type Weight" />
+                android:hint="Type Weight"
+                android:gravity="right"/>
         </RelativeLayout>
 
         <RelativeLayout
@@ -65,7 +66,8 @@
                 android:layout_height="wrap_content"
                 android:inputType="number"
                 android:layout_toLeftOf="@id/txvCelcius"
-                android:hint="Type Temperature" />
+                android:hint="Type Temperature"
+                android:gravity="right"/>
         </RelativeLayout>
 
         <RelativeLayout
@@ -93,7 +95,8 @@
                 android:layout_height="wrap_content"
                 android:inputType="number"
                 android:layout_toLeftOf="@id/txvDBP"
-                android:hint="Type DBP" />
+                android:hint="Type DBP"
+                android:gravity="right"/>
         </RelativeLayout>
 
         <RelativeLayout
@@ -121,7 +124,8 @@
                 android:layout_height="wrap_content"
                 android:inputType="number"
                 android:layout_toLeftOf="@id/txvSBP"
-                android:hint="Type SBP" />
+                android:hint="Type SBP"
+                android:gravity="right"/>
         </RelativeLayout>
 
         <RelativeLayout
@@ -149,8 +153,41 @@
                 android:layout_height="wrap_content"
                 android:inputType="number"
                 android:layout_toLeftOf="@id/txvGlucose"
+                android:gravity="right"
                 android:hint="Type Glucose level"/>
+        </RelativeLayout>
 
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/txvDateRow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:layout_centerVertical="true"
+                android:text="Date" />
+
+            <EditText
+                android:id="@+id/etxDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="date"
+                android:layout_alignParentRight="true"
+                android:layout_marginEnd="65sp"
+                android:gravity="right"
+                android:hint="Type Date"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/etxComments"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Comment"/>
         </RelativeLayout>
 
     </LinearLayout>
