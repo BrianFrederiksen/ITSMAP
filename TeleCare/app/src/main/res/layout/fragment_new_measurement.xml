@@ -45,14 +45,20 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number"
-                android:id="@+id/etxSugar"
-                android:text="Type Sugar levels"/>
+                android:id="@+id/etxGlucose"
+                android:text="Type Glucose levels"/>
             <EditText
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number"
                 android:id="@+id/etxComments"
                 android:text="Comments..." />
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:inputType="date"
+                android:id="@+id/etxDate"
+                android:text="Choose date"/>
 
         </LinearLayout>
 
