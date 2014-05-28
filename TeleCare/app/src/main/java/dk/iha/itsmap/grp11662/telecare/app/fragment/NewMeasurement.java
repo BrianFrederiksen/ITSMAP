@@ -1,14 +1,18 @@
 package dk.iha.itsmap.grp11662.telecare.app.fragment;
 
 import android.app.Activity;
-import android.net.Uri;
-import android.os.Bundle;
 import android.app.Fragment;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
+import dk.iha.itsmap.grp11662.telecare.app.MainActivity;
 import dk.iha.itsmap.grp11662.telecare.app.R;
+import dk.iha.itsmap.grp11662.telecare.app.model.Measurement;
 
 
 /**
@@ -18,94 +22,86 @@ import dk.iha.itsmap.grp11662.telecare.app.R;
  * to handle interaction events.
  * Use the {@link NewMeasurement#newInstance} factory method to
  * create an instance of this fragment.
- *
  */
 public class NewMeasurement extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    private OnFragmentInteractionListener mListener;
+    /**
+     * The fragment argument representing the section number for this
+     * fragment.
+     */
+    private static final String ARG_SECTION_NUMBER = "section_number";
 
     /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment NewMeasurement.
+     * Returns a new instance of this fragment for the given section
+     * number.
      */
-    // TODO: Rename and change types and number of parameters
-    public static NewMeasurement newInstance(String param1, String param2) {
+    public static NewMeasurement newInstance(int sectionNumber) {
         NewMeasurement fragment = new NewMeasurement();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putInt(ARG_SECTION_NUMBER, sectionNumber);
         fragment.setArguments(args);
         return fragment;
     }
-    public NewMeasurement() {
-        // Required empty public constructor
-    }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+    public NewMeasurement() {
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_new_measurement, container, false);
-    }
+        Measurement measurementToDisplay = new Measurement("75","38","34","2","1","BAM BAM Comments","Date");
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
+        View rootView = inflater.inflate(R.layout.fragment_new_measurement, container, false);
+        rootView = SetMeasurement(rootView, measurementToDisplay);
+
+        return rootView;
     }
 
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        try {
-            mListener = (OnFragmentInteractionListener) activity;
-        } catch (ClassCastException e) {
-            throw new ClassCastException(activity.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
+        ((MainActivity) activity).onSectionAttached(
+                getArguments().getInt(ARG_SECTION_NUMBER));
     }
 
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
+    public View SetMeasurement(View view, Measurement measurementToDisplay){
+
+        ((EditText)view.findViewById(R.id.etxWeight)).setText(measurementToDisplay.getWeight());
+        ((EditText)view.findViewById(R.id.etxTemp)).setText(measurementToDisplay.getTemperature());
+        ((EditText)view.findViewById(R.id.etxDBP)).setText(measurementToDisplay.getdBP());
+        ((EditText)view.findViewById(R.id.etxSBP)).setText(measurementToDisplay.getsBP());
+        ((EditText)view.findViewById(R.id.etxGlucose)).setText(measurementToDisplay.getBloodGlucose());
+        ((EditText)view.findViewById(R.id.etxComments)).setText(measurementToDisplay.getComments());
+        ((EditText)view.findViewById(R.id.etxDate)).setText(measurementToDisplay.getDate());
+        return view;
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        public void onFragmentInteraction(Uri uri);
-    }
+    public LinearLayout CreateLinearLayout(){
+        LinearLayout measurementList = new LinearLayout(getActivity());
+        LinearLayout measurement = new LinearLayout(getActivity());
 
+        LinearLayout.LayoutParams layoutList = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.FILL_PARENT);
+        LinearLayout.LayoutParams layoutMeasurement = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
+        measurementList.setLayoutParams(layoutList);
+        measurement.setLayoutParams(layoutMeasurement);
+
+        EditText editText = new EditText(getActivity());
+        TextView textView = new TextView(getActivity());
+
+        editText.setText("Type Weight");
+        editText.setLayoutParams(layoutMeasurement);
+
+        textView.setText("kg");
+        textView.setLayoutParams(layoutMeasurement);
+
+        measurement.addView(editText);
+        measurement.addView(textView);
+
+        measurementList.addView(measurement);
+        measurementList.addView(measurement,0);
+
+        return measurementList;
+    }
 }
+
+

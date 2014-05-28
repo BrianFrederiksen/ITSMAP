@@ -10,11 +10,21 @@ import java.io.Serializable;
 public class Measurement implements Parcelable, Serializable {
 
     //class variables
+    private Long id;
     private String weight;
     private String temperature;
     private String bloodGlucose;
     private String dBP;
     private String sBP;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     private String comments;
     private String date;
 
