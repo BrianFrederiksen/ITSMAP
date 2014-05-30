@@ -2,16 +2,38 @@ package dk.iha.itsmap.grp11662.telecare.app.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class User implements Parcelable, Serializable {
 
+    private ArrayList<Measurement> measurements;
     private Long id;
     private String username;
     private String firstname;
     private String surname;
     private String password;
+    private String sipAdress;
+    private String doctorSipAdress;
+
+
+    public String getSipAdress() {
+        return sipAdress;
+    }
+
+    public void setSipAdress(String sipAdress) {
+        this.sipAdress = sipAdress;
+    }
+
+    public String getDoctorSipAdress() {
+        return doctorSipAdress;
+    }
+
+    public void setDoctorSipAdress(String doctorSipAdress) {
+        this.doctorSipAdress = doctorSipAdress;
+    }
 
     public String getUsername() {
         return username;
@@ -53,12 +75,15 @@ public class User implements Parcelable, Serializable {
         this.password = password;
     }
 
-    public User(String username, String firstname, String surname, String password) {
+    public User(String username, String firstname, String surname, String password, ArrayList<Measurement> measurements) {
 
         this.username = username;
         this.firstname = firstname;
         this.surname = surname;
         this.password = password;
+        this.measurements = measurements;
+
+
     }
 
     public User(Parcel in) {
@@ -70,6 +95,17 @@ public class User implements Parcelable, Serializable {
         this.firstname = userData[2];
         this.surname = userData[3];
     }
+
+    public void AddUserMeasurements(Measurement newMeasurement) {
+
+        if(measurements == null)
+        {
+            measurements = new ArrayList<>();
+        }
+        measurements.add(newMeasurement);
+    }
+
+
 
     @Override
     public int describeContents() {
