@@ -4,104 +4,191 @@
     android:layout_height="match_parent"
     tools:context="dk.iha.itsmap.grp11662.telecare.app.fragment.NewMeasurement">
 
-    <!-- TODO: Update blank fragment layout -->
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:orientation="horizontal">
+        android:orientation="vertical"
+        android:layout_margin="5sp">
 
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_weight="1"
-            android:id="@+id/lnlData">
-
-            <EditText
-                android:layout_width="fill_parent"
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/txvWeight"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:inputType="number"
+                android:textSize="18sp"
+                android:layout_centerVertical="true"
+                android:text="Weight" />
+
+            <TextView
+                android:id="@+id/txvWeightUnit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="40sp"
+                android:text="kg" />
+            <EditText
                 android:id="@+id/etxWeight"
-                android:text="Type weight" />
-            <EditText
-                android:layout_width="fill_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:inputType="number"
+                android:layout_toLeftOf="@id/txvWeightUnit"
+                android:hint="Type Weight"
+                android:gravity="right"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/txvTemp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:layout_centerVertical="true"
+                android:text="Temperature" />
+
+            <TextView
+                android:id="@+id/txvCelcius"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="40sp"
+                android:text="\u2103" />
+            <EditText
                 android:id="@+id/etxTemp"
-                android:text="Type Tempeture" />
-            <EditText
-                android:layout_width="fill_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:inputType="number"
+                android:layout_toLeftOf="@id/txvCelcius"
+                android:hint="Type Temperature"
+                android:gravity="right"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/txvDBPs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:layout_centerVertical="true"
+                android:text="DBP" />
+
+            <TextView
+                android:id="@+id/txvDBP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:text="mm Hg" />
+            <EditText
                 android:id="@+id/etxDBP"
-                android:text="Type DBP" />
-            <EditText
-                android:layout_width="fill_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:inputType="number"
+                android:layout_toLeftOf="@id/txvDBP"
+                android:hint="Type DBP"
+                android:gravity="right"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/txvSBPs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:layout_centerVertical="true"
+                android:text="SBP" />
+
+            <TextView
+                android:id="@+id/txvSBP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:text="mm HG" />
+            <EditText
                 android:id="@+id/etxSBP"
-                android:text="Type SBP" />
-            <EditText
-                android:layout_width="fill_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:inputType="number"
+                android:layout_toLeftOf="@id/txvSBP"
+                android:hint="Type SBP"
+                android:gravity="right"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/txvGlucoseRow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:layout_centerVertical="true"
+                android:text="Glucose" />
+
+            <TextView
+                android:id="@+id/txvGlucose"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:text="m mol/l" />
+            <EditText
                 android:id="@+id/etxGlucose"
-                android:text="Type Glucose levels"/>
-            <EditText
-                android:layout_width="fill_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:inputType="number"
-                android:id="@+id/etxComments"
-                android:text="Comments..." />
+                android:layout_toLeftOf="@id/txvGlucose"
+                android:gravity="right"
+                android:hint="Type Glucose level"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/txvDateRow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:layout_centerVertical="true"
+                android:text="Date" />
+
             <EditText
-                android:layout_width="fill_parent"
+                android:id="@+id/etxDate"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:inputType="date"
-                android:id="@+id/etxDate"
-                android:text="Choose date"/>
+                android:layout_alignParentRight="true"
+                android:layout_marginEnd="65sp"
+                android:gravity="right"
+                android:hint="Type Date"/>
+        </RelativeLayout>
 
-        </LinearLayout>
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
 
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
-
-            <TextView
-                android:layout_width="fill_parent"
+            <EditText
+                android:id="@+id/etxComments"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="kg"
-                android:textSize="25sp"
-                android:id="@+id/txvWeight"/>
+                android:hint="Comment"/>
+        </RelativeLayout>
 
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="Celsius"
-                android:textSize="25sp"
-                android:id="@+id/txvTemp"/>
-
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="mm Hg"
-                android:textSize="25sp"
-                android:id="@+id/txvDBP"/>
-
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="mm Hg"
-                android:textSize="25sp"
-                android:id="@+id/txvSBP"/>
-
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="m mol/L"
-                android:textSize="25sp"
-                android:id="@+id/txvSugar"/>
-
-        </LinearLayout>
     </LinearLayout>
 </FrameLayout>

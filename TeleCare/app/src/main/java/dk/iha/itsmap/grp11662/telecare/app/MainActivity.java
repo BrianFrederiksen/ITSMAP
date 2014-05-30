@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import dk.iha.itsmap.grp11662.telecare.app.fragment.MyMeasurements;
 import dk.iha.itsmap.grp11662.telecare.app.fragment.NewMeasurement;
 
 
@@ -53,9 +54,14 @@ public class MainActivity extends Activity
                         .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
                         .commit();
                 break;
-            case 2:
+            case 1:
                 fragmentManager.beginTransaction()
                         .replace(R.id.container, NewMeasurement.newInstance(position + 1))
+                        .commit();
+                break;
+            case 2:
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, MyMeasurements.newInstance(position + 1))
                         .commit();
                 break;
             default:
