@@ -4,7 +4,6 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class User implements Parcelable, Serializable {
@@ -15,24 +14,24 @@ public class User implements Parcelable, Serializable {
     private String firstname;
     private String surname;
     private String password;
-    private String sipAdress;
-    private String doctorSipAdress;
+    private String sipDomain;
+    private String doctorUsername;
 
 
-    public String getSipAdress() {
-        return sipAdress;
+    public String getSipDomain() {
+        return sipDomain;
     }
 
-    public void setSipAdress(String sipAdress) {
-        this.sipAdress = sipAdress;
+    public void setSipDomain(String sipDomain) {
+        this.sipDomain = sipDomain;
     }
 
-    public String getDoctorSipAdress() {
-        return doctorSipAdress;
+    public String getDoctorUsername() {
+        return doctorUsername;
     }
 
-    public void setDoctorSipAdress(String doctorSipAdress) {
-        this.doctorSipAdress = doctorSipAdress;
+    public void setDoctorUsername(String doctorUsername) {
+        this.doctorUsername = doctorUsername;
     }
 
     public String getUsername() {
@@ -75,25 +74,33 @@ public class User implements Parcelable, Serializable {
         this.password = password;
     }
 
-    public User(String username, String firstname, String surname, String password, ArrayList<Measurement> measurements) {
+    public User(String username, String firstname, String surname, String password, ArrayList<Measurement> measurements,
+                String sipDomain, String doctorUsername) {
 
         this.username = username;
         this.firstname = firstname;
         this.surname = surname;
         this.password = password;
         this.measurements = measurements;
+        this.sipDomain = sipDomain;
+        this.doctorUsername = doctorUsername;
 
 
     }
 
     public User(Parcel in) {
 
-        String[] userData = new String[4];
+        String[] userData = new String[6];
         in.readStringArray(userData);
         this.username = userData[0];
         this.password = userData[1];
         this.firstname = userData[2];
         this.surname = userData[3];
+        this.sipDomain = userData[4];
+        this.doctorUsername = userData[5];
+
+        //TODO Add measurement to parcel
+
     }
 
     public void AddUserMeasurements(Measurement newMeasurement) {
@@ -115,7 +122,7 @@ public class User implements Parcelable, Serializable {
     @Override
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeStringArray(new String[]{this.username, this.password,
-                this.firstname, this.surname});
+                this.firstname, this.surname, this.sipDomain, this.doctorUsername});
     }
 
     public static final Parcelable.Creator<User> USER_CREATOR = new Parcelable.Creator<User>() {
