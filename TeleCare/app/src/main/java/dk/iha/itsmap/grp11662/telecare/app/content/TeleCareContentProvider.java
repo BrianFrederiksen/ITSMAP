@@ -6,6 +6,13 @@ import android.database.Cursor;
 import android.net.Uri;
 
 public class TeleCareContentProvider extends ContentProvider {
+
+    static final String PROVIDER_NAME = "";
+    static final String URL = "";
+    static final Uri CONTENT_URI = Uri.parse(URL);
+
+
+
     public TeleCareContentProvider() {
     }
 
@@ -24,7 +31,7 @@ public class TeleCareContentProvider extends ContentProvider {
 
     @Override
     public Uri insert(Uri uri, ContentValues values) {
-        // TODO: Implement this to handle requests to insert a new row.
+        // TODO: Implement this to handle requests to inisert a new row.
         throw new UnsupportedOperationException("Not yet implemented");
     }
 

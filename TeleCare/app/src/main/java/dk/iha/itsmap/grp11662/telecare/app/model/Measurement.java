@@ -3,11 +3,12 @@ package dk.iha.itsmap.grp11662.telecare.app.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-
 import java.io.Serializable;
 
 
 public class Measurement implements Parcelable, Serializable {
+
+
 
     //class variables
     private Long id;
