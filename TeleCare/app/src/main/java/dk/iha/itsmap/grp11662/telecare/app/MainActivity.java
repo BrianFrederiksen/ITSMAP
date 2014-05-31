@@ -41,6 +41,7 @@ public class MainActivity extends Activity
         mNavigationDrawerFragment.setUp(
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
+
     }
 
     @Override
@@ -61,7 +62,7 @@ public class MainActivity extends Activity
                 break;
             case 2:
                 fragmentManager.beginTransaction()
-                        .replace(R.id.container, MyMeasurements.newInstance(position + 1))
+                        .replace(R.id.container, MyMeasurements.newInstance(position +1))
                         .commit();
                 break;
             default:
