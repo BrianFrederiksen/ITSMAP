@@ -1,7 +1,7 @@
 package dk.iha.itsmap.grp11662.telecare.app;
 
-
 import android.app.Activity;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,11 +14,11 @@ import dk.iha.itsmap.grp11662.telecare.app.model.Measurement;
 
 public class MyMeasurementArrayAdapter extends BaseAdapter {
     private ArrayList<Measurement> measurements;
-    private Activity masterActivity; //Måske skal det være et fragment?
+    private Context masterActivity; //Måske skal det være et fragment?
 
     public MyMeasurementArrayAdapter(ArrayList<Measurement> measurementItems, Activity activity) {
         measurements = measurementItems;
-        masterActivity = activity;
+        masterActivity = activity.getApplicationContext();
     }
 
     @Override
@@ -39,15 +39,15 @@ public class MyMeasurementArrayAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View view, ViewGroup viewGroup) {
-
         View convertView = view;
         if (view == null) {
+
             convertView = LayoutInflater.from(masterActivity).inflate(R.layout.mymeasurement_listitem,null);
         }
-        TextView measurementListItem = (TextView)view.findViewById(R.id.txvListItem);
 
+        TextView measurementListItem = (TextView)view.findViewById(R.id.txvListItem);
         Measurement measurementToPresentInList = (Measurement)this.getItem(position);
-        measurementListItem.setText(measurementToPresentInList.getDate());
+        measurementListItem.setText(measurementToPresentInList.getWeight());
         return convertView;
     }
 }
