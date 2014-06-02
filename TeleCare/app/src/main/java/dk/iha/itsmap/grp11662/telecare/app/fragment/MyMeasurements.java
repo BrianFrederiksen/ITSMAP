@@ -26,22 +26,26 @@ public class MyMeasurements extends Fragment {
      * fragment.
      */
     private static final String ARG_SECTION_NUMBER = "section_number";
-
+    private int mSectionNumber;
     /**
      * Returns a new instance of this fragment for the given section
      * number.
      */
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        if (getArguments() != null) {
+            mSectionNumber = getArguments().getInt(ARG_SECTION_NUMBER);
+        }
         Measurement testMeasurement1 = new Measurement("75","38","34","2","1","BAM BAM Comments","4/3-2013");
         Measurement testMeasurement2 = new Measurement("65","28","24","1","0,5","BAM", "5/9 2012");
-        ArrayList<Measurement> testList = new ArrayList<>();
+        ArrayList<Measurement> testList = new ArrayList();
+
+        Measurement[] measurements = new Measurement[]{testMeasurement1,testMeasurement2};
         testList.add(testMeasurement1);
         testList.add(testMeasurement2);
 
-        MyMeasurementArrayAdapter myMeasurementArrayAdapter = new MyMeasurementArrayAdapter(testList, getActivity());
-        final ListView choiceMenuList = (ListView) getActivity().findViewById(R.id.lswMeasurements);
-        choiceMenuList.setAdapter(myMeasurementArrayAdapter); //Der sker en fejl her
+        ListView list = new ListView(getActivity());
+        list.setAdapter(new MyMeasurementArrayAdapter(measurements, getActivity()));
         super.onCreate(savedInstanceState);
     }
 
@@ -50,7 +54,6 @@ public class MyMeasurements extends Fragment {
         Bundle args = new Bundle();
         args.putInt(ARG_SECTION_NUMBER, sectionNumber);
         fragment.setArguments(args);
-
         return fragment;
     }
 
