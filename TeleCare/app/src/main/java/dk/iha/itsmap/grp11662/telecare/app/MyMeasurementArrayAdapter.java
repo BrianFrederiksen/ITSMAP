@@ -8,33 +8,31 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-
 import dk.iha.itsmap.grp11662.telecare.app.model.Measurement;
 
 public class MyMeasurementArrayAdapter extends BaseAdapter {
-    private ArrayList<Measurement> measurements;
+    private Measurement[] measurements;
     private Context masterActivity; //Måske skal det være et fragment?
 
-    public MyMeasurementArrayAdapter(ArrayList<Measurement> measurementItems, Activity activity) {
+    public MyMeasurementArrayAdapter(Measurement[] measurementItems, Activity activity) {
         measurements = measurementItems;
         masterActivity = activity.getApplicationContext();
     }
 
     @Override
     public int getCount() {
-        return measurements.size();
+        return measurements.length;
     }
 
     @Override
     public Object getItem(int i) {
-        return measurements.get(i);
+        return measurements[i];
     }
 
     @Override
     public long getItemId(int i) {
         //Muligvis skal det være getDescription() i stedet for getID()
-        return measurements.get(i).getId();
+        return measurements[i].getId();
     }
 
     @Override
