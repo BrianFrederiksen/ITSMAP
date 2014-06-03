@@ -34,7 +34,7 @@ public class MyMeasurementArrayAdapter extends BaseAdapter {
     @Override
     public long getItemId(int i) {
         //Muligvis skal det være getDescription() i stedet for getID()
-        return measurements.get(i).getId();
+        return measurements.get(i).describeContents();
     }
 
     @Override
