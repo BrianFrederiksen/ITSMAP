@@ -45,7 +45,7 @@ public class MyMeasurementArrayAdapter extends BaseAdapter {
             convertView = LayoutInflater.from(masterActivity).inflate(R.layout.mymeasurement_listitem,null);
         }
 
-        TextView measurementListItem = (TextView)view.findViewById(R.id.txvListItem);
+        TextView measurementListItem = (TextView) convertView.findViewById(R.id.txvListItem);
         Measurement measurementToPresentInList = (Measurement)this.getItem(position);
         measurementListItem.setText(measurementToPresentInList.getWeight());
         return convertView;
