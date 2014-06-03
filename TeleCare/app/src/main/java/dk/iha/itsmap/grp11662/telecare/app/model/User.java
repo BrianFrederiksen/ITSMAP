@@ -85,6 +85,9 @@ public class User implements Parcelable, Serializable {
         this.sipDomain = sipDomain;
         this.doctorUsername = doctorUsername;
 
+    }
+
+    public User(){
 
     }
 
@@ -100,7 +103,6 @@ public class User implements Parcelable, Serializable {
         this.doctorUsername = userData[5];
 
         //TODO Add measurement to parcel
-
     }
 
     public void AddUserMeasurements(Measurement newMeasurement) {
