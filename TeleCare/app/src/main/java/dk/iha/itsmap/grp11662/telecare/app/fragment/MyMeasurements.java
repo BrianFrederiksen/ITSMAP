@@ -1,8 +1,8 @@
 package dk.iha.itsmap.grp11662.telecare.app.fragment;
 
 import android.app.Activity;
-import android.os.Bundle;
 import android.app.Fragment;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,16 +21,9 @@ import dk.iha.itsmap.grp11662.telecare.app.model.Measurement;
 
 public class MyMeasurements extends Fragment {
 
-    /**
-     * The fragment argument representing the section number for this
-     * fragment.
-     */
     private static final String ARG_SECTION_NUMBER = "section_number";
     private int mSectionNumber;
-    /**
-     * Returns a new instance of this fragment for the given section
-     * number.
-     */
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         if (getArguments() != null) {
@@ -56,16 +49,26 @@ public class MyMeasurements extends Fragment {
                              Bundle savedInstanceState) {
         //LinearLayout ln = (LinearLayout)inflater.inflate(R.layout.fragment_my_measurements, container, false);
         View v = inflater.inflate(R.layout.fragment_my_measurements, null);
-
         Measurement testMeasurement1 = new Measurement("75","38","34","2","1","BAM BAM Comments","4/3-2013");
         Measurement testMeasurement2 = new Measurement("65","28","24","1","0,5","BAM", "5/9 2012");
+
         ArrayList<Measurement> measurements = new ArrayList<>();
         measurements.add(testMeasurement1);
         measurements.add(testMeasurement2);
-        ListView list =(ListView)v.findViewById(R.id.lswMeasurements);
+        final ListView list =(ListView)v.findViewById(R.id.lswMeasurements);
 
-        //ListView list = (ListView)getActivity().findViewById(R.id.lswMeasurements); //list er null, muligvis fordi vi skal bruge support.v4.app
         list.setAdapter(new MyMeasurementArrayAdapter(measurements, getActivity()));
+       /* list.setOnClickListener(new AdapterView.OnItemClickListener(){
+
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Measurement measurement = (Measurement)list.getItemAtPosition(i);
+                Bundle arguments = new Bundle();
+                arguments.putParcelable("measurements",measurement);
+
+                Intent intent = new Intent();
+            }
+        });*/
         return v;
     }
 
