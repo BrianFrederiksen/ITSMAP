@@ -20,6 +20,8 @@ public class TeleCareDbOpenHelper extends SQLiteOpenHelper {
     public static final String COLUMN_PASSWORD = "password";
     public static final String COLUMN_FIRSTNAME ="firstname";
     public static final String COLUMN_SURNAME = "surname";
+    public static final String COLUMN_SIPDOMAIN = "sipdomain";
+    public static final String COLUMN_DOCTORUSERNAME = "doctorsipaddress";
 
 
     //Table Measurement
@@ -41,6 +43,8 @@ public class TeleCareDbOpenHelper extends SQLiteOpenHelper {
                     COLUMN_PASSWORD + " TEXT, " +
                     COLUMN_FIRSTNAME + " TEXT, " +
                     COLUMN_SURNAME + " TEXT " +
+                    COLUMN_SIPDOMAIN + " TEXT " +
+                    COLUMN_DOCTORUSERNAME + " TEXT " +
                     ")";
 
     private static final String TABLE_CREATE_MEASUREMENT =
