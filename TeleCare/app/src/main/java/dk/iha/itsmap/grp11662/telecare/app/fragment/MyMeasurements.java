@@ -1,7 +1,7 @@
 package dk.iha.itsmap.grp11662.telecare.app.fragment;
 
 import android.app.Activity;
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,13 +38,12 @@ public class MyMeasurements extends Fragment {
         }
         Measurement testMeasurement1 = new Measurement("75","38","34","2","1","BAM BAM Comments","4/3-2013");
         Measurement testMeasurement2 = new Measurement("65","28","24","1","0,5","BAM", "5/9 2012");
-        ArrayList<Measurement> testList = new ArrayList();
+        ArrayList<Measurement> measurements = new ArrayList<>();
+        measurements.add(testMeasurement1);
+        measurements.add(testMeasurement2);
 
-        Measurement[] measurements = new Measurement[]{testMeasurement1,testMeasurement2};
-        testList.add(testMeasurement1);
-        testList.add(testMeasurement2);
 
-        ListView list = new ListView(getActivity());
+        ListView list = (ListView)getActivity().findViewById(R.id.lswMeasurements); //list er null, muligvis fordi vi skal bruge support.v4.app
         list.setAdapter(new MyMeasurementArrayAdapter(measurements, getActivity()));
         super.onCreate(savedInstanceState);
     }
@@ -63,7 +62,8 @@ public class MyMeasurements extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_my_measurements, container, false);
+        LinearLayout ln = (LinearLayout)inflater.inflate(R.layout.fragment_my_measurements, container, false);
+        return ln;
     }
 
     @Override
