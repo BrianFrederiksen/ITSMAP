@@ -12,30 +12,45 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="0.1">
+        android:layout_weight="0.1"
+        android:weightSum="1">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/text_presentation_call_before"
+            android:id="@+id/callPresentationText"
+            android:layout_gravity="center_horizontal"
+            android:textSize="25dp"
+            android:layout_margin="20dp" />
+
+        <dk.iha.itsmap.grp11662.telecare.app.CircularImageView
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:id="@+id/imageview_circular_dr"
+            android:src="@drawable/img_stethoscope"
+            android:layout_weight="0.42"
+            android:layout_gravity="center"
+            android:layout_marginBottom="50dp" />
+        
         <Switch
-            android:layout_width="match_parent"
+            android:layout_width="216dp"
             android:layout_height="wrap_content"
             android:id="@+id/speakerSwitch"
             android:button="@android:drawable/ic_lock_silent_mode_off"
-            android:background="@android:drawable/toast_frame"
+            android:background="@android:drawable/bottom_bar"
             android:checked="false"
-            android:layout_margin="10dp"
             android:text="Speaker"
-            android:enabled="true" />
-
-        <Switch
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/muteSwitch"
-            android:button="@android:drawable/ic_lock_silent_mode_off"
-            android:background="@android:drawable/toast_frame"
-            android:checked="false"
-            android:layout_margin="10dp"
-            android:enabled="true"
-            android:text="Mute"
-            android:singleLine="false" />
+            android:enabled="false"
+            android:clickable="false"
+            android:gravity="center_vertical|right"
+            android:layout_gravity="center_horizontal"
+            android:textStyle="bold"
+            android:textColor="@android:color/primary_text_dark"
+            android:visibility="invisible"
+            android:layout_marginBottom="10dp"
+            />
 
     </LinearLayout>
 

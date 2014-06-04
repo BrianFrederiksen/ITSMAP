@@ -10,7 +10,7 @@
     </style>
 
     <style name="TeleCareActionBar" parent="@android:style/Widget.Holo.Light.ActionBar">
-        <item name="android:background">@android:color/holo_blue_dark</item>
+        <item name="android:background">@android:color/holo_purple</item>
     </style>
 
 </resources>

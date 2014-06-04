@@ -7,12 +7,16 @@ import android.net.sip.SipProfile;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import dk.iha.itsmap.grp11662.telecare.app.CircularImageView;
 import dk.iha.itsmap.grp11662.telecare.app.MainActivity;
 import dk.iha.itsmap.grp11662.telecare.app.R;
 import dk.iha.itsmap.grp11662.telecare.app.connectivity.SipHandler;
@@ -24,6 +28,7 @@ public class CallFragment extends Fragment {
     private MainActivity mainActivity;
     private Boolean isCallActive = false;
     private SipAudioCall mAudioCall;
+    private boolean onSpeakerPhone = false;
 
     private SipAudioCall.Listener mAudioCallListener= new SipAudioCall.Listener() {
         @Override
@@ -36,8 +41,13 @@ public class CallFragment extends Fragment {
         @Override
         public void onCallEstablished(SipAudioCall call) {
 
+            if(onSpeakerPhone) {
+                call.setSpeakerMode(true);
+            } else {
+                call.setSpeakerMode(false);
+            }
+
             call.startAudio();
-            call.setSpeakerMode(false);
             if(call.isMuted()) {
                 call.toggleMute();
             }
@@ -83,6 +93,22 @@ public class CallFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         setupCallButton((Button) mainActivity.findViewById(R.id.call_button_placeholder));
+        Switch speakerSwitch = (Switch) mainActivity.findViewById(R.id.speakerSwitch);
+
+        speakerSwitch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!onSpeakerPhone) {
+                    onSpeakerPhone = true;
+                    mAudioCall.setSpeakerMode(true);
+                    Toast.makeText(mainActivity, "SpeakerPhone activated!", Toast.LENGTH_SHORT).show();
+                } else {
+                    onSpeakerPhone = false;
+                    mAudioCall.setSpeakerMode(false);
+                    Toast.makeText(mainActivity, "SpeakerPhone deactivated!", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
     @Override
@@ -114,7 +140,8 @@ public class CallFragment extends Fragment {
                     try{
                         mAudioCall = sipHandler.MakeAudioCall(mainActivity.getUser().getDoctorUsername(), 30, mAudioCallListener);
                         isCallActive = true;
-                        ToggleCallView();
+
+                        fadeInCall();
                     } catch (Exception e) {
                         Toast.makeText(mainActivity,"Unable to call doctor", Toast.LENGTH_LONG ).show();
                     }
@@ -122,7 +149,7 @@ public class CallFragment extends Fragment {
                     try {
                         mAudioCall.endCall();
                         isCallActive = false;
-                        ToggleCallView();
+                        fadeOutCall();
                     } catch (Exception e) {
                         Toast.makeText(mainActivity,"Something went wrong with SIP", Toast.LENGTH_LONG ).show();
                     }
@@ -132,12 +159,35 @@ public class CallFragment extends Fragment {
         });
     }
 
-    protected void ToggleCallView() {
-        if(isCallActive) {
-            mainActivity.findViewById(R.id.call_button_placeholder).setBackgroundColor(getResources().getColor(R.color.Color_HangUp_CallButton));
-        } else {
-            mainActivity.findViewById(R.id.call_button_placeholder).setBackgroundColor(getResources().getColor(R.color.Color_Call_CallButton));
-        }
+    public void fadeInCall() {
+        Switch speakerSwitch = (Switch) mainActivity.findViewById(R.id.speakerSwitch);
+        speakerSwitch.setAlpha(0f);
+        speakerSwitch.setVisibility(View.VISIBLE);
+        speakerSwitch.setEnabled(true);
+        speakerSwitch.setActivated(true);
+        speakerSwitch.setClickable(true);
+        speakerSwitch.animate().alpha(1f).setDuration(2000);
 
+        TextView textView = (TextView) mainActivity.findViewById(R.id.callPresentationText);
+        textView.setText("Dr. Phil, is todays doctor!");
+
+        CircularImageView imageView = (CircularImageView) mainActivity.findViewById(R.id.imageview_circular_dr);
+        imageView.setImageResource(R.drawable.img_drphill);
+        mainActivity.findViewById(R.id.call_button_placeholder).setBackgroundColor(getResources().getColor(R.color.Color_HangUp_CallButton));
+    }
+
+    public void fadeOutCall() {
+        final Switch speakerSwitch = (Switch) mainActivity.findViewById(R.id.speakerSwitch);
+        speakerSwitch.setAlpha(1f);
+        speakerSwitch.setEnabled(false);
+        speakerSwitch.animate().alpha(0f).setDuration(2000);
+
+        TextView textView = (TextView) mainActivity.findViewById(R.id.callPresentationText);
+        textView.setText(getResources().getString(R.string.text_presentation_call_before));
+
+        CircularImageView imageView = (CircularImageView) mainActivity.findViewById(R.id.imageview_circular_dr);
+        imageView.setImageResource(R.drawable.img_stethoscope);
+
+        mainActivity.findViewById(R.id.call_button_placeholder).setBackgroundColor(getResources().getColor(R.color.Color_Call_CallButton));
     }
 }
