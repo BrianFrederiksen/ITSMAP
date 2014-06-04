@@ -1,8 +1,12 @@
 <resources>
-
-    <!-- Base application theme. -->
+    <color name="Color_Call_CallButton">@android:color/holo_green_dark</color>
+    <color name="Color_HangUp_CallButton">@android:color/holo_red_dark</color>
     <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
+        <item name="android:actionBarStyle">@style/TeleCareActionBar</item>
+    </style>
+
+    <style name="TeleCareActionBar" parent="@android:style/Widget.Holo.Light.ActionBar">
+        <item name="android:background">@android:color/holo_blue_dark</item>
     </style>
 
 </resources>

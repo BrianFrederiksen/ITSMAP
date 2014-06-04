@@ -12,8 +12,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
+import dk.iha.itsmap.grp11662.telecare.app.fragment.CallFragment;
 import dk.iha.itsmap.grp11662.telecare.app.fragment.MyMeasurements;
 import dk.iha.itsmap.grp11662.telecare.app.fragment.NewMeasurement;
+import dk.iha.itsmap.grp11662.telecare.app.model.Measurement;
+import dk.iha.itsmap.grp11662.telecare.app.model.User;
 
 
 public class MainActivity extends Activity
@@ -29,6 +35,14 @@ public class MainActivity extends Activity
      */
     private CharSequence mTitle;
 
+    /**
+     * Used to store current user logged in
+     */
+    private User mUser;
+    public User getUser() {
+        return mUser;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +50,9 @@ public class MainActivity extends Activity
         mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getFragmentManager().findFragmentById(R.id.navigation_drawer);
         mTitle = getTitle();
+
+        //Instantiate currenUser, just mocking
+        mUser = new User("patient", "Patient","Much Sick", "1337",new ArrayList<Measurement>(), "192.168.1.30", "sip:shiphter@192.168.1.30");
 
         // Set up the drawer.
         mNavigationDrawerFragment.setUp(
@@ -66,7 +83,7 @@ public class MainActivity extends Activity
                 break;
             default:
                 fragmentManager.beginTransaction()
-                        .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
+                        .replace(R.id.container, CallFragment.newInstance(position + 1))
                         .commit();
                 break;
         }
