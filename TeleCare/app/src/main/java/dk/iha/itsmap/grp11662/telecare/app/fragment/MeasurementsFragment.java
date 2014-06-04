@@ -20,7 +20,7 @@ import dk.iha.itsmap.grp11662.telecare.app.R;
 import dk.iha.itsmap.grp11662.telecare.app.model.Measurement;
 
 
-public class MyMeasurements extends Fragment {
+public class MeasurementsFragment extends Fragment {
 
     private static final String ARG_SECTION_NUMBER = "section_number";
     private int mSectionNumber;
@@ -35,15 +35,15 @@ public class MyMeasurements extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
-    public static MyMeasurements newInstance(int sectionNumber) {
-        MyMeasurements fragment = new MyMeasurements();
+    public static MeasurementsFragment newInstance(int sectionNumber) {
+        MeasurementsFragment fragment = new MeasurementsFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_SECTION_NUMBER, sectionNumber);
         fragment.setArguments(args);
         return fragment;
     }
 
-    public MyMeasurements() {
+    public MeasurementsFragment() {
     }
 
     @Override
@@ -75,7 +75,7 @@ public class MyMeasurements extends Fragment {
                 Bundle arguments = new Bundle();
                 arguments.putParcelable("measurements", measurement);
 
-                NewMeasurement newMeasurement = new NewMeasurement();
+                MeasurementListItemFragment newMeasurement = new MeasurementListItemFragment();
                 getFragmentManager().beginTransaction()
                         .replace(R.id.container, newMeasurement).addToBackStack(null)
                         .commit();
