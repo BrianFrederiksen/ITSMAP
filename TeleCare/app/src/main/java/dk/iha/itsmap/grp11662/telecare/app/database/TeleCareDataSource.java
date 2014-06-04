@@ -57,20 +57,6 @@ public class TeleCareDataSource {
         dbHelper.close();
     }
 
-    //TODO return user
-    public boolean Login(String username, String password){
-        Cursor cursor = database.rawQuery("SELECT * FROM" +
-                TeleCareDbOpenHelper.TABLE_USER +
-                "WHERE username=? AND password=?",
-                new String[]{username,password});
-        if(cursor != null){
-            if(cursor.getCount() > 0 ){
-                return true;
-            }
-        }
-        return false;
-    }
-
     public Measurement createMeasurement(Measurement measurement){
         Log.i(LOG_TAG_DATASOURCE,"Creating measurement");
         ContentValues values = new ContentValues();
@@ -101,6 +87,28 @@ public class TeleCareDataSource {
         user.setId(insertId);
         Log.i(LOG_TAG_DATASOURCE,"User created");
         return user;
+    }
+
+    //TODO return user
+    public User Login(String username, String password){
+        User user = new User();
+        Cursor cursor = database.rawQuery("SELECT * FROM" +
+                        TeleCareDbOpenHelper.TABLE_USER +
+                        "WHERE username=? AND password=?",
+                new String[]{username,password});
+        if(cursor != null){
+            if(cursor.getCount() > 0 ){
+                user.setId(cursor.getLong(cursor.getColumnIndex(TeleCareDbOpenHelper.COLUMN_USER_ID)));
+                user.setUsername(cursor.getString(cursor.getColumnIndex(TeleCareDbOpenHelper.COLUMN_USERNAME)));
+                user.setPassword(cursor.getString(cursor.getColumnIndex(TeleCareDbOpenHelper.COLUMN_PASSWORD)));
+                user.setFirstname(cursor.getString(cursor.getColumnIndex(TeleCareDbOpenHelper.COLUMN_FIRSTNAME)));
+                user.setSurname(cursor.getString(cursor.getColumnIndex(TeleCareDbOpenHelper.COLUMN_FIRSTNAME)));
+                user.setSipDomain(cursor.getString(cursor.getColumnIndex(TeleCareDbOpenHelper.COLUMN_SIPDOMAIN)));
+                user.setDoctorUsername(cursor.getString(cursor.getColumnIndex(TeleCareDbOpenHelper.COLUMN_DOCTORUSERNAME)));
+                return user;
+            }
+        }
+        return null;
     }
 
     //TODO use user id to findAllMeasurements
@@ -281,6 +289,5 @@ public class TeleCareDataSource {
         //measurement = datasource.createMeasurement(mDemoDataMeasurement);
         Log.i(LOG_TAG_DATASOURCE,"Demo data measurement created with id: " + measurement.getId());
     }
-
 
 }
