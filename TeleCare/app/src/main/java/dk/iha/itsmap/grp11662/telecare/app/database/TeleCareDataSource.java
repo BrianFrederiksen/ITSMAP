@@ -57,6 +57,19 @@ public class TeleCareDataSource {
         dbHelper.close();
     }
 
+    public boolean Login(String username, String password){
+        Cursor cursor = database.rawQuery("SELECT * FROM" +
+                TeleCareDbOpenHelper.TABLE_USER +
+                "WHERE username=? AND password=?",
+                new String[]{username,password});
+        if(cursor != null){
+            if(cursor.getCount() > 0 ){
+                return true;
+            }
+        }
+        return false;
+    }
+
     public Measurement createMeasurement(Measurement measurement){
         Log.i(LOG_TAG_DATASOURCE,"Creating measurement");
         ContentValues values = new ContentValues();
@@ -132,11 +145,12 @@ public class TeleCareDataSource {
         return users;
     }
 
-    //TODO find measurement by id!
-    public Measurement findMeasurement(){
+    public Measurement findMeasurement(Long id){
         Measurement measurement = new Measurement();
-        Cursor cursor = database.query(TeleCareDbOpenHelper.TABLE_MEASUREMENT, mMeasurementColumns,
-                null,null,null,null,null );
+        Cursor cursor =  this.database.rawQuery("select * from " +
+                TeleCareDbOpenHelper.TABLE_MEASUREMENT + " where " +
+                TeleCareDbOpenHelper.COLUMN_MEASUREMENT_ID + "=" + id  , null);
+
         Log.i(LOG_TAG_DATASOURCE, "Returned: " + cursor.getCount() + " rows");
         while(cursor.moveToNext()) {
             measurement.setId(cursor.getLong(cursor.getColumnIndex(TeleCareDbOpenHelper.COLUMN_MEASUREMENT_ID)));
@@ -151,11 +165,12 @@ public class TeleCareDataSource {
         return measurement;
     }
 
-    //TODO find user by id!
-    public User findUser(){
+    public User findUser(Long id){
         User user = new User();
-        Cursor cursor = database.query(TeleCareDbOpenHelper.TABLE_USER, mUserColumns,
-                null,null,null,null,null );
+        Cursor cursor =  this.database.rawQuery("select * from " +
+                TeleCareDbOpenHelper.TABLE_USER + " where " +
+                TeleCareDbOpenHelper.COLUMN_USER_ID + "=" + id  , null);
+
         Log.i(LOG_TAG_DATASOURCE, "Returned: " + cursor.getCount() + " rows");
         while(cursor.moveToNext()) {
             user.setId(cursor.getLong(cursor.getColumnIndex(TeleCareDbOpenHelper.COLUMN_USER_ID)));
