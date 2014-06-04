@@ -24,26 +24,9 @@ import dk.iha.itsmap.grp11662.telecare.app.model.Measurement;
  * create an instance of this fragment.
  */
 public class NewMeasurement extends Fragment {
-    /**
-     * The fragment argument representing the section number for this
-     * fragment.
-     */
-    private static final String ARG_SECTION_NUMBER = "section_number";
-
-    /**
-     * Returns a new instance of this fragment for the given section
-     * number.
-     */
-    public static NewMeasurement newInstance(int sectionNumber) {
-        NewMeasurement fragment = new NewMeasurement();
-        Bundle args = new Bundle();
-        args.putInt(ARG_SECTION_NUMBER, sectionNumber);
-        fragment.setArguments(args);
-        return fragment;
-    }
 
     public NewMeasurement() {
-    }
+    }//Constructor must remain empty because its a fragment
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -54,13 +37,6 @@ public class NewMeasurement extends Fragment {
         rootView = SetMeasurement(rootView, measurementToDisplay);
 
         return rootView;
-    }
-
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        ((MainActivity) activity).onSectionAttached(
-                getArguments().getInt(ARG_SECTION_NUMBER));
     }
 
     public View SetMeasurement(View view, Measurement measurementToDisplay){
