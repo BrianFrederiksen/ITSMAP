@@ -75,6 +75,10 @@ public class User implements Parcelable, Serializable {
         this.password = password;
     }
 
+    public User(){
+
+    }
+
     public User(String username, String firstname, String surname, String password, ArrayList<Measurement> measurements,
                 String sipDomain, String doctorUsername) {
 
@@ -88,13 +92,9 @@ public class User implements Parcelable, Serializable {
 
     }
 
-    public User(){
-
-    }
-
     public User(Parcel in) {
 
-        String[] userData = new String[6];
+        String[] userData = new String[7];
         in.readStringArray(userData);
         this.username = userData[0];
         this.password = userData[1];

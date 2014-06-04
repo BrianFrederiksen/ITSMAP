@@ -57,6 +57,7 @@ public class TeleCareDataSource {
         dbHelper.close();
     }
 
+    //TODO return user
     public boolean Login(String username, String password){
         Cursor cursor = database.rawQuery("SELECT * FROM" +
                 TeleCareDbOpenHelper.TABLE_USER +
@@ -102,6 +103,7 @@ public class TeleCareDataSource {
         return user;
     }
 
+    //TODO use user id to findAllMeasurements
     public List<Measurement> findAllMeasurements(){
         List<Measurement> measurements = new ArrayList<Measurement>();
         Cursor cursor = database.query(TeleCareDbOpenHelper.TABLE_MEASUREMENT, mMeasurementColumns,
