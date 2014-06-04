@@ -8,8 +8,6 @@ import java.io.Serializable;
 
 public class Measurement implements Parcelable, Serializable {
 
-
-
     //class variables
     private Long id;
     private String weight;
@@ -17,7 +15,10 @@ public class Measurement implements Parcelable, Serializable {
     private String bloodGlucose;
     private String dBP;
     private String sBP;
+    private String comments;
+    private String date;
 
+    //getter and setters
     public Long getId() {
         return id;
     }
@@ -25,11 +26,6 @@ public class Measurement implements Parcelable, Serializable {
     public void setId(Long id) {
         this.id = id;
     }
-
-    private String comments;
-    private String date;
-
-    //Getter and setters
 
     public String getWeight() {
         return weight;
@@ -88,6 +84,10 @@ public class Measurement implements Parcelable, Serializable {
     }
 
     //Constructors
+    public Measurement(){
+
+    }
+
     public Measurement(String Weight, String Temperature, String BloodGlucose, String DBP, String SBP, String Comments, String Date){
 
         this.weight = Weight;
@@ -98,12 +98,8 @@ public class Measurement implements Parcelable, Serializable {
         this.comments = Comments;
         this.date = Date;
     }
-    public Measurement(){
-
-    }
 
     public Measurement(Parcel in){
-
         String[] measurementData = new String[7];
         in.readStringArray(measurementData);
         this.weight =  measurementData[0];
@@ -115,7 +111,7 @@ public class Measurement implements Parcelable, Serializable {
         this.date =  measurementData[6];
     }
 
-    //Parcelable override methods
+    //Overrides
     @Override
     public int describeContents() {
         return 0;

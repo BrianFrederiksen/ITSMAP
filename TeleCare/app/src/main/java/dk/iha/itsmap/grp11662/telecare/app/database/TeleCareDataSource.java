@@ -18,11 +18,8 @@ import dk.iha.itsmap.grp11662.telecare.app.model.User;
 
 public class TeleCareDataSource {
 
+    //static fields
     private static String LOG_TAG_DATASOURCE = "Datasource: ";
-
-    SQLiteOpenHelper dbHelper;
-    SQLiteDatabase database;
-
     private static final String[] mMeasurementColumns = {
             TeleCareDbOpenHelper.COLUMN_MEASUREMENT_ID,
             TeleCareDbOpenHelper.COLUMN_MEASUREMENT_WEIGHT,
@@ -42,10 +39,16 @@ public class TeleCareDataSource {
             TeleCareDbOpenHelper.COLUMN_SIPDOMAIN,
             TeleCareDbOpenHelper.COLUMN_DOCTORUSERNAME};
 
+    //class variables
+    SQLiteOpenHelper dbHelper;
+    SQLiteDatabase database;
+
+    //constructor
     public TeleCareDataSource(Context context){
         dbHelper = new TeleCareDbOpenHelper(context);
     }
 
+    //methods for handling database
     public SQLiteDatabase Open(){
         Log.i(LOG_TAG_DATASOURCE,"Opening database");
         database = dbHelper.getWritableDatabase();
@@ -57,19 +60,29 @@ public class TeleCareDataSource {
         dbHelper.close();
     }
 
-    public boolean Login(String username, String password){
+    //User handling
+    public User Login(String username, String password){
+        User user = new User();
         Cursor cursor = database.rawQuery("SELECT * FROM" +
-                TeleCareDbOpenHelper.TABLE_USER +
-                "WHERE username=? AND password=?",
+                        TeleCareDbOpenHelper.TABLE_USER +
+                        "WHERE username=? AND password=?",
                 new String[]{username,password});
         if(cursor != null){
             if(cursor.getCount() > 0 ){
-                return true;
+                user.setId(cursor.getLong(cursor.getColumnIndex(TeleCareDbOpenHelper.COLUMN_USER_ID)));
+                user.setUsername(cursor.getString(cursor.getColumnIndex(TeleCareDbOpenHelper.COLUMN_USERNAME)));
+                user.setPassword(cursor.getString(cursor.getColumnIndex(TeleCareDbOpenHelper.COLUMN_PASSWORD)));
+                user.setFirstname(cursor.getString(cursor.getColumnIndex(TeleCareDbOpenHelper.COLUMN_FIRSTNAME)));
+                user.setSurname(cursor.getString(cursor.getColumnIndex(TeleCareDbOpenHelper.COLUMN_FIRSTNAME)));
+                user.setSipDomain(cursor.getString(cursor.getColumnIndex(TeleCareDbOpenHelper.COLUMN_SIPDOMAIN)));
+                user.setDoctorUsername(cursor.getString(cursor.getColumnIndex(TeleCareDbOpenHelper.COLUMN_DOCTORUSERNAME)));
+                return user;
             }
         }
-        return false;
+        return null;
     }
 
+    //Create methods
     public Measurement createMeasurement(Measurement measurement){
         Log.i(LOG_TAG_DATASOURCE,"Creating measurement");
         ContentValues values = new ContentValues();
@@ -102,6 +115,8 @@ public class TeleCareDataSource {
         return user;
     }
 
+    //find methods
+    //TODO use user id to findAllMeasurements
     public List<Measurement> findAllMeasurements(){
         List<Measurement> measurements = new ArrayList<Measurement>();
         Cursor cursor = database.query(TeleCareDbOpenHelper.TABLE_MEASUREMENT, mMeasurementColumns,
@@ -184,6 +199,7 @@ public class TeleCareDataSource {
         return user;
     }
 
+    //delete methods
     public void DeleteMeasurement(Measurement measurement){
         Log.i(LOG_TAG_DATASOURCE,"Deleting measurement");
         Long id = measurement.getId();
@@ -198,7 +214,7 @@ public class TeleCareDataSource {
         Log.i(LOG_TAG_DATASOURCE,"User deleted");
     }
 
-    public List<Measurement> getAllMeasurement(){
+/*    public List<Measurement> getAllMeasurement(){
         List<Measurement> measurements = new ArrayList<Measurement>();
 
         Cursor cursor = database.query(TeleCareDbOpenHelper.TABLE_MEASUREMENT,
@@ -212,9 +228,9 @@ public class TeleCareDataSource {
         }
         cursor.close();
         return measurements;
-    }
+    }*/
 
-    public List<User> getAllUsers(){
+/*    public List<User> getAllUsers(){
         List<User> users = new ArrayList<User>();
 
         Cursor cursor = database.query(TeleCareDbOpenHelper.TABLE_USER,
@@ -228,9 +244,9 @@ public class TeleCareDataSource {
         }
         cursor.close();
         return users;
-    }
+    }*/
 
-    private Measurement cursorToMeasurement(Cursor cursor){
+/*    private Measurement cursorToMeasurement(Cursor cursor){
         Measurement measurement = new Measurement();
         measurement.setId(cursor.getLong(0));
         measurement.setWeight(cursor.getString(1));
@@ -241,9 +257,9 @@ public class TeleCareDataSource {
         measurement.setComments(cursor.getString(6));
         measurement.setDate(cursor.getString(7));
         return measurement;
-    }
+    }*/
 
-    private User cursorToUser(Cursor cursor){
+/*    private User cursorToUser(Cursor cursor){
         User user = new User();
         user.setId(cursor.getLong(0));
         user.setUsername(cursor.getString(1));
@@ -253,18 +269,18 @@ public class TeleCareDataSource {
         user.setSipDomain(cursor.getString(5));
         user.setDoctorUsername(cursor.getString(6));
         return user;
-    }
+    }*/
 
     //TODO move this to main activtity
-    //TeleCareDataSource datasource;
-    //datasource = new TeleCareDataSource(this);
-    //datasource.Open();
-    //List<Measurement> measurements = datasource.findAllMeasurements();
-    //if(measurements.size() == 0){
-        //createDate();
-        //measurements = datasource.findAllMeasurements();
-    //}
-    //createDate();
+/*    TeleCareDataSource datasource;
+    datasource = new TeleCareDataSource(this);
+    datasource.Open();
+    List<Measurement> measurements = datasource.findAllMeasurements();
+    if(measurements.size() == 0){
+        createDate();
+        measurements = datasource.findAllMeasurements();
+    }
+    createDate();
 
     private void createData(){
         Log.i(LOG_TAG_DATASOURCE, "creating demo data measurement");
@@ -278,7 +294,6 @@ public class TeleCareDataSource {
         measurement.setDate("04/05/2014");
         //measurement = datasource.createMeasurement(mDemoDataMeasurement);
         Log.i(LOG_TAG_DATASOURCE,"Demo data measurement created with id: " + measurement.getId());
-    }
-
+    }*/
 
 }
