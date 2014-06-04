@@ -9,6 +9,7 @@ import java.util.List;
 
 public class User implements Parcelable, Serializable {
 
+    //class variables
     private ArrayList<Measurement> measurements;
     private Long id;
     private String username;
@@ -18,7 +19,7 @@ public class User implements Parcelable, Serializable {
     private String sipDomain;
     private String doctorUsername;
 
-
+    //getter and setters
     public String getSipDomain() {
         return sipDomain;
     }
@@ -75,13 +76,13 @@ public class User implements Parcelable, Serializable {
         this.password = password;
     }
 
+    //constructors
     public User(){
 
     }
 
     public User(String username, String firstname, String surname, String password, ArrayList<Measurement> measurements,
                 String sipDomain, String doctorUsername) {
-
         this.username = username;
         this.firstname = firstname;
         this.surname = surname;
@@ -89,11 +90,9 @@ public class User implements Parcelable, Serializable {
         this.measurements = measurements;
         this.sipDomain = sipDomain;
         this.doctorUsername = doctorUsername;
-
     }
 
     public User(Parcel in) {
-
         String[] userData = new String[7];
         in.readStringArray(userData);
         this.username = userData[0];
@@ -102,10 +101,9 @@ public class User implements Parcelable, Serializable {
         this.surname = userData[3];
         this.sipDomain = userData[4];
         this.doctorUsername = userData[5];
-
-        //TODO Add measurement to parcel
     }
 
+    //methods
     public void AddUserMeasurements(Measurement newMeasurement) {
 
         if(measurements == null)
@@ -115,6 +113,7 @@ public class User implements Parcelable, Serializable {
         measurements.add(newMeasurement);
     }
 
+    //overrides
     @Override
     public int describeContents() {
         return 0;
