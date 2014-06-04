@@ -7,10 +7,35 @@
 
 
     <LinearLayout
-        android:orientation="horizontal"
+        android:id="@+id/call_view_container"
+        android:gravity="bottom"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="0.1">
+
+        <Switch
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/speakerSwitch"
+            android:button="@android:drawable/ic_lock_silent_mode_off"
+            android:background="@android:drawable/toast_frame"
+            android:checked="false"
+            android:layout_margin="10dp"
+            android:text="Speaker"
+            android:enabled="true" />
+
+        <Switch
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/muteSwitch"
+            android:button="@android:drawable/ic_lock_silent_mode_off"
+            android:background="@android:drawable/toast_frame"
+            android:checked="false"
+            android:layout_margin="10dp"
+            android:enabled="true"
+            android:text="Mute"
+            android:singleLine="false" />
 
     </LinearLayout>
 
@@ -30,7 +55,7 @@
         android:layout_weight="1"
         android:layout_gravity="bottom"
         android:drawableTop="@android:drawable/ic_menu_call"
-        android:paddingTop="5dp">
+        android:paddingTop="8dp">
 
     </Button>
 

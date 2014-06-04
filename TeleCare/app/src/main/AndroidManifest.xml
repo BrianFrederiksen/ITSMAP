@@ -17,17 +17,25 @@
             </intent-filter>
         </activity>
 
-        <provider
+        <!--provider
             android:name=".content.TeleCareContentProvider"
             android:authorities="content://dk.iha.itsmap.grp11662.telecare.app.provider/*"
             android:enabled="true"
             android:exported="true" >
-        </provider>
+        </provider-->
     </application>
 
     <uses-permission android:name="android.permission.USE_SIP" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.CONFIGURE_SIP" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
+    <uses-feature
+        android:name="android.software.sip"
+        android:required="true" />
     <uses-feature
         android:name="android.hardware.sip.voip"
         android:required="true" />

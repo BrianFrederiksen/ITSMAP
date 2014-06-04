@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import dk.iha.itsmap.grp11662.telecare.app.MainActivity;
@@ -34,32 +35,18 @@ public class CallFragment extends Fragment {
 
         @Override
         public void onCallEstablished(SipAudioCall call) {
-            super.onCallEstablished(call);
 
-            fetchCallButton().setBackgroundColor(getResources().getColor(R.color.Color_HangUp_CallButton));
             call.startAudio();
-            call.toggleMute();
-        }
-
-        @Override
-        public void onCallBusy(SipAudioCall call) {
-            super.onCallBusy(call);
-            fetchCallButton().setBackgroundColor(getResources().getColor(R.color.Color_Call_CallButton));
-            Toast.makeText(getActivity(), "Call busy", Toast.LENGTH_LONG);
-            call.close();
+            call.setSpeakerMode(false);
+            if(call.isMuted()) {
+                call.toggleMute();
+            }
         }
 
         @Override
         public void onCallEnded(SipAudioCall call) {
             super.onCallEnded(call);
-
-            fetchCallButton().setBackgroundColor(getResources().getColor(R.color.Color_Call_CallButton));
-
             call.close();
-        }
-
-        private Button fetchCallButton() {
-            return (Button) getActivity().findViewById(R.id.call_button_placeholder);
         }
     };
 
@@ -125,19 +112,17 @@ public class CallFragment extends Fragment {
             public void onClick(View v) {
                 if(!isCallActive) {
                     try{
-                        mAudioCall = sipHandler.MakeAudioCall(mainActivity.getUser().getDoctorUsername(), 30);
-                        mAudioCall.setListener(mAudioCallListener);
-                        //getActivity().findViewById(R.id.call_button_placeholder).setBackgroundColor(getResources().getColor(R.color.Color_HangUp_CallButton));
+                        mAudioCall = sipHandler.MakeAudioCall(mainActivity.getUser().getDoctorUsername(), 30, mAudioCallListener);
                         isCallActive = true;
+                        ToggleCallView();
                     } catch (Exception e) {
                         Toast.makeText(mainActivity,"Unable to call doctor", Toast.LENGTH_LONG ).show();
                     }
                 } else {
                     try {
                         mAudioCall.endCall();
-                        mAudioCall.close();
-                        button.setBackgroundColor(getResources().getColor(R.color.Color_Call_CallButton));
                         isCallActive = false;
+                        ToggleCallView();
                     } catch (Exception e) {
                         Toast.makeText(mainActivity,"Something went wrong with SIP", Toast.LENGTH_LONG ).show();
                     }
@@ -145,5 +130,14 @@ public class CallFragment extends Fragment {
                 }
             }
         });
+    }
+
+    protected void ToggleCallView() {
+        if(isCallActive) {
+            mainActivity.findViewById(R.id.call_button_placeholder).setBackgroundColor(getResources().getColor(R.color.Color_HangUp_CallButton));
+        } else {
+            mainActivity.findViewById(R.id.call_button_placeholder).setBackgroundColor(getResources().getColor(R.color.Color_Call_CallButton));
+        }
+
     }
 }
