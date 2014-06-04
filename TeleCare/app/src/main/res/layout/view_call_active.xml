@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    android:baselineAligned="false"
+    android:clickable="false"
+    android:measureWithLargestChild="false">
+
+    <Switch
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/speakerSwitch"
+        android:button="@android:drawable/ic_lock_silent_mode_off"
+        android:background="@android:drawable/toast_frame"
+        android:checked="false"
+        android:layout_margin="10dp"
+        android:text="Speaker"
+        android:enabled="true"
+        android:shadowColor="@drawable/drawer_shadow" />
+
+    <Switch
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/muteSwitch"
+        android:button="@android:drawable/ic_lock_silent_mode_off"
+        android:background="@android:drawable/toast_frame"
+        android:checked="false"
+        android:layout_margin="10dp"
+        android:enabled="true"
+        android:text="Mute"
+        android:shadowColor="@drawable/drawer_shadow"
+        android:singleLine="false" />
+</LinearLayout>

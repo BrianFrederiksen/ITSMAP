@@ -3,6 +3,10 @@
     <color name="Color_HangUp_CallButton">@android:color/holo_red_dark</color>
     <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar">
         <item name="android:actionBarStyle">@style/TeleCareActionBar</item>
+        <item name="android:textColor">@android:color/primary_text_dark</item>
+        <item name="android:editTextColor">@android:color/secondary_text_dark</item>
+        <item name="android:textAppearanceListItem">@android:color/primary_text_dark</item>
+
     </style>
 
     <style name="TeleCareActionBar" parent="@android:style/Widget.Holo.Light.ActionBar">

@@ -35,22 +35,6 @@ public class SipHandler {
             Log.e(LOG_TAG, "Exception occured: " + e.getMessage());
             Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
         }
-
-        mListener = new SipAudioCall.Listener() {
-
-            @Override
-            public void onCallEstablished(SipAudioCall call) {
-                call.startAudio();
-                call.setSpeakerMode(true);
-                call.toggleMute();
-            }
-
-            @Override
-            public void onCallEnded(SipAudioCall call) {
-                // Do something.
-            }
-        };
-
     }
 
 
@@ -113,8 +97,8 @@ public class SipHandler {
         }
     }
 
-    public SipAudioCall MakeAudioCall(String peerUri, Integer timeOut) throws SipException {
-        SipAudioCall call = mSipManager.makeAudioCall(mSipProfile.getUriString(), peerUri, mListener, timeOut);
+    public SipAudioCall MakeAudioCall(String peerUri, Integer timeOut, SipAudioCall.Listener listener) throws SipException {
+        SipAudioCall call = mSipManager.makeAudioCall(mSipProfile.getUriString(), peerUri, listener, timeOut);
         return call;
     }
 }
