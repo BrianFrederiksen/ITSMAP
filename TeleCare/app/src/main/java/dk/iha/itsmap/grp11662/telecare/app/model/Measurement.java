@@ -98,6 +98,9 @@ public class Measurement implements Parcelable, Serializable {
         this.comments = Comments;
         this.date = Date;
     }
+    public Measurement(){
+
+    }
 
     public Measurement(Parcel in){
 
