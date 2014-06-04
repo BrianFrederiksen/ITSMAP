@@ -9,6 +9,7 @@ import android.media.audiofx.Visualizer;
 import android.net.UrlQuerySanitizer;
 import android.util.Log;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,12 +23,24 @@ public class TeleCareDataSource {
     SQLiteOpenHelper dbHelper;
     SQLiteDatabase database;
 
-    private String[] mMeasurementColumns = {TeleCareDbOpenHelper.COLUMN_MEASUREMENT_ID, TeleCareDbOpenHelper.COLUMN_MEASUREMENT_WEIGHT, TeleCareDbOpenHelper.COLUMN_MEASUREMENT_TEMPERATURE,
-            TeleCareDbOpenHelper.COLUMN_MEASUREMENT_BLOODGLUCOSE, TeleCareDbOpenHelper.COLUMN_MEASUREMENT_DBP, TeleCareDbOpenHelper.COLUMN_MEASUREMENT_SBP,
-            TeleCareDbOpenHelper.COLUMN_MEASUREMENT_COMMENTS, TeleCareDbOpenHelper.COLUMN_MEASUREMENT_DATE};
+    private static final String[] mMeasurementColumns = {
+            TeleCareDbOpenHelper.COLUMN_MEASUREMENT_ID,
+            TeleCareDbOpenHelper.COLUMN_MEASUREMENT_WEIGHT,
+            TeleCareDbOpenHelper.COLUMN_MEASUREMENT_TEMPERATURE,
+            TeleCareDbOpenHelper.COLUMN_MEASUREMENT_BLOODGLUCOSE,
+            TeleCareDbOpenHelper.COLUMN_MEASUREMENT_DBP,
+            TeleCareDbOpenHelper.COLUMN_MEASUREMENT_SBP,
+            TeleCareDbOpenHelper.COLUMN_MEASUREMENT_COMMENTS,
+            TeleCareDbOpenHelper.COLUMN_MEASUREMENT_DATE};
 
-    private String[] mUserColumns = {TeleCareDbOpenHelper.COLUMN_USER_ID, TeleCareDbOpenHelper.COLUMN_USERNAME, TeleCareDbOpenHelper.COLUMN_PASSWORD,
-            TeleCareDbOpenHelper.COLUMN_FIRSTNAME, TeleCareDbOpenHelper.COLUMN_SURNAME, TeleCareDbOpenHelper.COLUMN_SIPDOMAIN, TeleCareDbOpenHelper.COLUMN_DOCTORUSERNAME};
+    private static final String[] mUserColumns = {
+            TeleCareDbOpenHelper.COLUMN_USER_ID,
+            TeleCareDbOpenHelper.COLUMN_USERNAME,
+            TeleCareDbOpenHelper.COLUMN_PASSWORD,
+            TeleCareDbOpenHelper.COLUMN_FIRSTNAME,
+            TeleCareDbOpenHelper.COLUMN_SURNAME,
+            TeleCareDbOpenHelper.COLUMN_SIPDOMAIN,
+            TeleCareDbOpenHelper.COLUMN_DOCTORUSERNAME};
 
     public TeleCareDataSource(Context context){
         dbHelper = new TeleCareDbOpenHelper(context);
@@ -44,7 +57,7 @@ public class TeleCareDataSource {
         dbHelper.close();
     }
 
-    public void createMeasurement(Measurement measurement){
+    public Measurement createMeasurement(Measurement measurement){
         Log.i(LOG_TAG_DATASOURCE,"Creating measurement");
         ContentValues values = new ContentValues();
 
@@ -58,9 +71,10 @@ public class TeleCareDataSource {
         Long insertId = database.insert(TeleCareDbOpenHelper.TABLE_MEASUREMENT,null,values);
         measurement.setId(insertId);
         Log.i(LOG_TAG_DATASOURCE,"Measurement created");
+        return measurement;
     }
 
-    public void createUser(User user){
+    public User createUser(User user){
         Log.i(LOG_TAG_DATASOURCE,"Creating user");
         ContentValues values = new ContentValues();
 
@@ -72,8 +86,88 @@ public class TeleCareDataSource {
         Long insertId = database.insert(TeleCareDbOpenHelper.TABLE_USER,null,values);
         user.setId(insertId);
         Log.i(LOG_TAG_DATASOURCE,"User created");
+        return user;
     }
 
+    public List<Measurement> findAllMeasurements(){
+        List<Measurement> measurements = new ArrayList<Measurement>();
+        Cursor cursor = database.query(TeleCareDbOpenHelper.TABLE_MEASUREMENT, mMeasurementColumns,
+                null,null,null,null,null );
+        Log.i(LOG_TAG_DATASOURCE, "Returned: " + cursor.getCount() + " rows");
+        if(cursor.getCount() > 0){
+            while (cursor.moveToNext()){
+                Measurement measurement = new Measurement();
+                measurement.setId(cursor.getLong(cursor.getColumnIndex(TeleCareDbOpenHelper.COLUMN_MEASUREMENT_ID)));
+                measurement.setWeight(cursor.getString(cursor.getColumnIndex(TeleCareDbOpenHelper.COLUMN_MEASUREMENT_WEIGHT)));
+                measurement.setTemperature(cursor.getString(cursor.getColumnIndex(TeleCareDbOpenHelper.COLUMN_MEASUREMENT_TEMPERATURE)));
+                measurement.setBloodGlucose(cursor.getString(cursor.getColumnIndex(TeleCareDbOpenHelper.COLUMN_MEASUREMENT_BLOODGLUCOSE)));
+                measurement.setdBP(cursor.getString(cursor.getColumnIndex(TeleCareDbOpenHelper.COLUMN_MEASUREMENT_DBP)));
+                measurement.setsBP(cursor.getString(cursor.getColumnIndex(TeleCareDbOpenHelper.COLUMN_MEASUREMENT_SBP)));
+                measurement.setComments(cursor.getString(cursor.getColumnIndex(TeleCareDbOpenHelper.COLUMN_MEASUREMENT_COMMENTS)));
+                measurement.setDate(cursor.getString(cursor.getColumnIndex(TeleCareDbOpenHelper.COLUMN_MEASUREMENT_DATE)));
+                measurements.add(measurement);
+            }
+        }
+        return measurements;
+    }
+
+    public List<User> findAllUsers(){
+        List<User> users = new ArrayList<User>();
+        Cursor cursor = database.query(TeleCareDbOpenHelper.TABLE_USER, mUserColumns,
+                null,null,null,null,null );
+        Log.i(LOG_TAG_DATASOURCE, "Returned: " + cursor.getCount() + " rows");
+        if(cursor.getCount() > 0){
+            while(cursor.moveToNext()){
+                User user = new User();
+                user.setId(cursor.getLong(cursor.getColumnIndex(TeleCareDbOpenHelper.COLUMN_USER_ID)));
+                user.setUsername(cursor.getString(cursor.getColumnIndex(TeleCareDbOpenHelper.COLUMN_USERNAME)));
+                user.setPassword(cursor.getString(cursor.getColumnIndex(TeleCareDbOpenHelper.COLUMN_PASSWORD)));
+                user.setFirstname(cursor.getString(cursor.getColumnIndex(TeleCareDbOpenHelper.COLUMN_FIRSTNAME)));
+                user.setSurname(cursor.getString(cursor.getColumnIndex(TeleCareDbOpenHelper.COLUMN_SURNAME)));
+                user.setSipDomain(cursor.getString(cursor.getColumnIndex(TeleCareDbOpenHelper.COLUMN_SIPDOMAIN)));
+                user.setDoctorUsername(cursor.getString(cursor.getColumnIndex(TeleCareDbOpenHelper.COLUMN_DOCTORUSERNAME)));
+                users.add(user);
+            }
+        }
+        return users;
+    }
+
+    //TODO find measurement by id!
+    public Measurement findMeasurement(){
+        Measurement measurement = new Measurement();
+        Cursor cursor = database.query(TeleCareDbOpenHelper.TABLE_MEASUREMENT, mMeasurementColumns,
+                null,null,null,null,null );
+        Log.i(LOG_TAG_DATASOURCE, "Returned: " + cursor.getCount() + " rows");
+        while(cursor.moveToNext()) {
+            measurement.setId(cursor.getLong(cursor.getColumnIndex(TeleCareDbOpenHelper.COLUMN_MEASUREMENT_ID)));
+            measurement.setWeight(cursor.getString(cursor.getColumnIndex(TeleCareDbOpenHelper.COLUMN_MEASUREMENT_WEIGHT)));
+            measurement.setTemperature(cursor.getString(cursor.getColumnIndex(TeleCareDbOpenHelper.COLUMN_MEASUREMENT_TEMPERATURE)));
+            measurement.setBloodGlucose(cursor.getString(cursor.getColumnIndex(TeleCareDbOpenHelper.COLUMN_MEASUREMENT_BLOODGLUCOSE)));
+            measurement.setdBP(cursor.getString(cursor.getColumnIndex(TeleCareDbOpenHelper.COLUMN_MEASUREMENT_DBP)));
+            measurement.setsBP(cursor.getString(cursor.getColumnIndex(TeleCareDbOpenHelper.COLUMN_MEASUREMENT_SBP)));
+            measurement.setComments(cursor.getString(cursor.getColumnIndex(TeleCareDbOpenHelper.COLUMN_MEASUREMENT_COMMENTS)));
+            measurement.setDate(cursor.getString(cursor.getColumnIndex(TeleCareDbOpenHelper.COLUMN_MEASUREMENT_DATE)));
+        }
+        return measurement;
+    }
+
+    //TODO find user by id!
+    public User findUser(){
+        User user = new User();
+        Cursor cursor = database.query(TeleCareDbOpenHelper.TABLE_USER, mUserColumns,
+                null,null,null,null,null );
+        Log.i(LOG_TAG_DATASOURCE, "Returned: " + cursor.getCount() + " rows");
+        while(cursor.moveToNext()) {
+            user.setId(cursor.getLong(cursor.getColumnIndex(TeleCareDbOpenHelper.COLUMN_USER_ID)));
+            user.setUsername(cursor.getString(cursor.getColumnIndex(TeleCareDbOpenHelper.COLUMN_USERNAME)));
+            user.setPassword(cursor.getString(cursor.getColumnIndex(TeleCareDbOpenHelper.COLUMN_PASSWORD)));
+            user.setFirstname(cursor.getString(cursor.getColumnIndex(TeleCareDbOpenHelper.COLUMN_FIRSTNAME)));
+            user.setSurname(cursor.getString(cursor.getColumnIndex(TeleCareDbOpenHelper.COLUMN_SURNAME)));
+            user.setSipDomain(cursor.getString(cursor.getColumnIndex(TeleCareDbOpenHelper.COLUMN_SIPDOMAIN)));
+            user.setDoctorUsername(cursor.getString(cursor.getColumnIndex(TeleCareDbOpenHelper.COLUMN_DOCTORUSERNAME)));
+        }
+        return user;
+    }
 
     public void DeleteMeasurement(Measurement measurement){
         Log.i(LOG_TAG_DATASOURCE,"Deleting measurement");
@@ -145,5 +239,31 @@ public class TeleCareDataSource {
         user.setDoctorUsername(cursor.getString(6));
         return user;
     }
+
+    //TODO move this to main activtity
+    //TeleCareDataSource datasource;
+    //datasource = new TeleCareDataSource(this);
+    //datasource.Open();
+    //List<Measurement> measurements = datasource.findAllMeasurements();
+    //if(measurements.size() == 0){
+        //createDate();
+        //measurements = datasource.findAllMeasurements();
+    //}
+    //createDate();
+
+    private void createData(){
+        Log.i(LOG_TAG_DATASOURCE, "creating demo data measurement");
+        Measurement measurement = new Measurement();
+        measurement.setWeight("80");
+        measurement.setTemperature("37");
+        measurement.setBloodGlucose("7");
+        measurement.setsBP("120");
+        measurement.setdBP("80");
+        measurement.setComments("Test measurement");
+        measurement.setDate("04/05/2014");
+        //measurement = datasource.createMeasurement(mDemoDataMeasurement);
+        Log.i(LOG_TAG_DATASOURCE,"Demo data measurement created with id: " + measurement.getId());
+    }
+
 
 }
