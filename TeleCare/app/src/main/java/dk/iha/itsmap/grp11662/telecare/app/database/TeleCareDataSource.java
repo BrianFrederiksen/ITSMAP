@@ -272,18 +272,31 @@ public class TeleCareDataSource {
     }*/
 
     //TODO move this to main activtity
-/*    TeleCareDataSource datasource;
+    /*TeleCareDataSource datasource;
     datasource = new TeleCareDataSource(this);
     datasource.Open();
-    List<Measurement> measurements = datasource.findAllMeasurements();
-    if(measurements.size() == 0){
-        createDate();
-        measurements = datasource.findAllMeasurements();
-    }
-    createDate();
 
-    private void createData(){
-        Log.i(LOG_TAG_DATASOURCE, "creating demo data measurement");
+    createDummyMeasurement();
+    createDummyUser();*/
+
+    //TODO createDummyUser
+/*    private void createDummyUser(){
+        Log.i(TeleCareDataSource.LOG_TAG_DATASOURCE, "Creating dummy user");
+        User user = new User();
+        user.setUsername("jrt");
+        user.setPassword("jesper");
+        user.setFirstname("Jesper");
+        user.setSurname("Toerreseo");
+        user.setSipDomain("insertSipDomainHere");
+        user.setDoctorUsername("insertDoctorUsernameHere");
+        user = datasource.createUser(user);
+        Log.i(TeleCareDataSource.LOG_TAG_DATASOURCE, "Dummy user created with username: " +
+                user.getUsername() + "password: " + user.getPassword() + "and id: " + user.getId());
+    }*/
+
+    //TODO createDummyMeasurement
+    /*private void createDummyMeasurement(){
+        Log.i(TeleCareDataSource.LOG_TAG_DATASOURCE, "creating demo data measurement");
         Measurement measurement = new Measurement();
         measurement.setWeight("80");
         measurement.setTemperature("37");
@@ -292,8 +305,14 @@ public class TeleCareDataSource {
         measurement.setdBP("80");
         measurement.setComments("Test measurement");
         measurement.setDate("04/05/2014");
-        //measurement = datasource.createMeasurement(mDemoDataMeasurement);
-        Log.i(LOG_TAG_DATASOURCE,"Demo data measurement created with id: " + measurement.getId());
+        measurement = datasource.createMeasurement(mDemoDataMeasurement);
+        Log.i(TeleCareDataSource.LOG_TAG_DATASOURCE,"Demo data measurement created with id: " + measurement.getId());
     }*/
 
+
+    /*List<Measurement> measurements = datasource.findAllMeasurements();
+    if(measurements.size() == 0){
+        createDummyMeasurement();
+        measurements = datasource.findAllMeasurements();
+    }*/
 }
