@@ -15,7 +15,7 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 import dk.iha.itsmap.grp11662.telecare.app.fragment.CallFragment;
-import dk.iha.itsmap.grp11662.telecare.app.fragment.MyMeasurements;
+import dk.iha.itsmap.grp11662.telecare.app.fragment.MeasurementsFragment;
 import dk.iha.itsmap.grp11662.telecare.app.model.Measurement;
 import dk.iha.itsmap.grp11662.telecare.app.model.User;
 
@@ -77,7 +77,7 @@ public class MainActivity extends Activity
                 break;
             case 2:
                 fragmentManager.beginTransaction()
-                        .replace(R.id.container, MyMeasurements.newInstance(position +1))
+                        .replace(R.id.container, MeasurementsFragment.newInstance(position + 1))
                         .commit();
                 break;
             default:
