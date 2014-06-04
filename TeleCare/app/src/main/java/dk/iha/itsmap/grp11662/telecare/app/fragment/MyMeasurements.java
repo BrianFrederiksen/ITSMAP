@@ -2,10 +2,13 @@ package dk.iha.itsmap.grp11662.telecare.app.fragment;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -58,17 +61,24 @@ public class MyMeasurements extends Fragment {
         final ListView list =(ListView)v.findViewById(R.id.lswMeasurements);
 
         list.setAdapter(new MyMeasurementArrayAdapter(measurements, getActivity()));
-       /* list.setOnClickListener(new AdapterView.OnItemClickListener(){
+
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Measurement measurement = (Measurement)list.getItemAtPosition(i);
+                Measurement measurement = (Measurement) list.getItemAtPosition(i);
                 Bundle arguments = new Bundle();
-                arguments.putParcelable("measurements",measurement);
+                arguments.putParcelable("measurements", measurement);
 
-                Intent intent = new Intent();
+                NewMeasurement newMeasurement = new NewMeasurement();
+                FragmentManager fragmentManager = getFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager
+                        .beginTransaction();
+                fragmentTransaction.replace(R.id.container, newMeasurement);
+                fragmentTransaction.commit();
+
             }
-        });*/
+        });
         return v;
     }
 
