@@ -19,18 +19,18 @@ public class SipHandler {
 
     public static final String LOG_TAG = "SipHandler";
 
-    private SipManager mSipManager = null;
+    private SipManager mSipManager;
     private Boolean isOpen = false;
 
-    private Context mContext = null;
-    private SipProfile mSipProfile = null;
+    private Context mContext;
+    private SipProfile mSipProfile;
     private SipAudioCall.Listener mListener;
 
-    public SipHandler(Context context, User user, String sipDomain) {
+    public SipHandler(Context context, User user) {
         mContext = context;
         try {
+            setupSipProfile(user.getUsername(), user.getPassword(), user.getSipDomain());
             setupSipManager();
-            setupSipProfile(user.getUsername(), user.getPassword(), sipDomain);
         } catch(Exception e) {
             Log.e(LOG_TAG, "Exception occured: " + e.getMessage());
             Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
@@ -58,6 +58,7 @@ public class SipHandler {
         if(mSipManager == null) {
             mSipManager = SipManager.newInstance(mContext);
         }
+        Boolean isRegistered = mSipManager.isRegistered(mSipProfile.getUriString());
 
         mSipManager.setRegistrationListener(mSipProfile.getUriString(), new SipRegistrationListener() {
 
@@ -71,13 +72,14 @@ public class SipHandler {
 
             public void onRegistrationFailed(String localProfileUri, int errorCode,
                                              String errorMessage) {
-                Log.i(LOG_TAG,"Registration failed.  Please check settings.");
+                Log.e(LOG_TAG,"Registration failed.  Please check settings. Message: " + errorMessage + " Code: " + errorCode);
             }
         });
     }
 
     private void setupSipProfile(String username, String password, String domain) throws ParseException{
         SipProfile.Builder builder = new SipProfile.Builder(username, domain);
+        builder.setProfileName(username);
         builder.setPassword(password);
         mSipProfile = builder.build();
     }

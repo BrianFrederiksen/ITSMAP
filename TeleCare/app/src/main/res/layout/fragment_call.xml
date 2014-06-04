@@ -1,13 +1,37 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="dk.iha.itsmap.grp11662.telecare.app.fragment.CallFragment">
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:measureWithLargestChild="false">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_weight="0.1">
 
-</FrameLayout>
+    </LinearLayout>
+
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/call_button_placeholder"
+        android:layout_marginLeft="-5dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginRight="-5dp"
+        android:layout_marginBottom="-5dp"
+        android:background="@android:color/holo_green_dark"
+        android:visibility="visible"
+        android:adjustViewBounds="true"
+        android:layout_weight="1"
+        android:layout_gravity="bottom"
+        android:drawableTop="@android:drawable/ic_menu_call"
+        android:paddingTop="5dp">
+
+    </Button>
+
+</LinearLayout>

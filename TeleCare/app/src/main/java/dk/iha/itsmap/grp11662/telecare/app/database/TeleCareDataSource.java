@@ -44,7 +44,7 @@ public class TeleCareDataSource {
         dbHelper.close();
     }
 
-    public Measurement createMeasurement(Measurement measurement){
+    public void createMeasurement(Measurement measurement){
         Log.i(LOG_TAG_DATASOURCE,"Creating measurement");
         ContentValues values = new ContentValues();
 
@@ -58,10 +58,9 @@ public class TeleCareDataSource {
         Long insertId = database.insert(TeleCareDbOpenHelper.TABLE_MEASUREMENT,null,values);
         measurement.setId(insertId);
         Log.i(LOG_TAG_DATASOURCE,"Measurement created");
-        return measurement;
     }
 
-    public User createUser(User user){
+    public void createUser(User user){
         Log.i(LOG_TAG_DATASOURCE,"Creating user");
         ContentValues values = new ContentValues();
 
@@ -73,7 +72,6 @@ public class TeleCareDataSource {
         Long insertId = database.insert(TeleCareDbOpenHelper.TABLE_USER,null,values);
         user.setId(insertId);
         Log.i(LOG_TAG_DATASOURCE,"User created");
-        return user;
     }
 
 
