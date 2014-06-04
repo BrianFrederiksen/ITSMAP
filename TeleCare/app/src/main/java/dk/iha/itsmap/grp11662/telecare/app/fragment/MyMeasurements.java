@@ -2,8 +2,6 @@ package dk.iha.itsmap.grp11662.telecare.app.fragment;
 
 import android.app.Activity;
 import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,6 +24,7 @@ public class MyMeasurements extends Fragment {
 
     private static final String ARG_SECTION_NUMBER = "section_number";
     private int mSectionNumber;
+    ArrayList<Measurement> measurements;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -50,14 +49,19 @@ public class MyMeasurements extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        //LinearLayout ln = (LinearLayout)inflater.inflate(R.layout.fragment_my_measurements, container, false);
         View v = inflater.inflate(R.layout.fragment_my_measurements, null);
+
+        //Should be done outside this class
         Measurement testMeasurement1 = new Measurement("75","38","34","2","1","BAM BAM Comments","4/3-2013");
         Measurement testMeasurement2 = new Measurement("65","28","24","1","0,5","BAM", "5/9 2012");
 
-        ArrayList<Measurement> measurements = new ArrayList<>();
-        measurements.add(testMeasurement1);
-        measurements.add(testMeasurement2);
+        ArrayList<Measurement> measurementsToShowInList = new ArrayList<>();
+        measurementsToShowInList.add(testMeasurement1);
+        measurementsToShowInList.add(testMeasurement2);
+        //Endof Should be done outside tis class
+
+        PutMeasurements(measurementsToShowInList);
+
         final ListView list =(ListView)v.findViewById(R.id.lswMeasurements);
 
         list.setAdapter(new MyMeasurementArrayAdapter(measurements, getActivity()));
@@ -67,16 +71,18 @@ public class MyMeasurements extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Measurement measurement = (Measurement) list.getItemAtPosition(i);
+
                 Bundle arguments = new Bundle();
                 arguments.putParcelable("measurements", measurement);
 
                 NewMeasurement newMeasurement = new NewMeasurement();
-                FragmentManager fragmentManager = getFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager
-                        .beginTransaction();
-                fragmentTransaction.replace(R.id.container, newMeasurement);
-                fragmentTransaction.commit();
-
+                getFragmentManager().beginTransaction()
+                        .replace(R.id.container, newMeasurement).addToBackStack(null)
+                        .commit();
+                /*MyMeasurements myMeasurements = new MyMeasurements();
+                //getFragmentManager().findFragmentById()
+                getFragmentManager().beginTransaction().remove(myMeasurements);
+                getFragmentManager().beginTransaction().add(R.id.container, newMeasurement);*/
             }
         });
         return v;
@@ -89,16 +95,8 @@ public class MyMeasurements extends Fragment {
                 getArguments().getInt(ARG_SECTION_NUMBER));
     }
 
-    public View SetMeasurement(View view, Measurement measurementToDisplay){
-
-        ((EditText)view.findViewById(R.id.etxWeight)).setText(measurementToDisplay.getWeight());
-        ((EditText)view.findViewById(R.id.etxTemp)).setText(measurementToDisplay.getTemperature());
-        ((EditText)view.findViewById(R.id.etxDBP)).setText(measurementToDisplay.getdBP());
-        ((EditText)view.findViewById(R.id.etxSBP)).setText(measurementToDisplay.getsBP());
-        ((EditText)view.findViewById(R.id.etxGlucose)).setText(measurementToDisplay.getBloodGlucose());
-        ((EditText)view.findViewById(R.id.etxComments)).setText(measurementToDisplay.getComments());
-        ((EditText)view.findViewById(R.id.etxDate)).setText(measurementToDisplay.getDate());
-        return view;
+    public void PutMeasurements(ArrayList<Measurement> measurementItems){
+        measurements = measurementItems;
     }
 
     public LinearLayout CreateLinearLayout(){
