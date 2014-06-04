@@ -15,7 +15,7 @@ public class TeleCareDbOpenHelper extends SQLiteOpenHelper {
 
     //Table User
     public static final String TABLE_USER = "user";
-    public static final String COLUMN_USER_ID = "userId";
+    public static final String COLUMN_USER_ID = "id";
     public static final String COLUMN_USERNAME = "username";
     public static final String COLUMN_PASSWORD = "password";
     public static final String COLUMN_FIRSTNAME ="firstname";
@@ -26,12 +26,13 @@ public class TeleCareDbOpenHelper extends SQLiteOpenHelper {
 
     //Table Measurement
     public static final String TABLE_MEASUREMENT = "measurement";
-    public static final String COLUMN_MEASUREMENT_ID = "measurementId";
+    public static final String COLUMN_MEASUREMENT_ID = "id";
+    public static final String COLUMN_MEASUREMENT_USER_ID = "userid";
     public static final String COLUMN_MEASUREMENT_WEIGHT = "weight";
     public static final String COLUMN_MEASUREMENT_TEMPERATURE = "temperature";
     public static final String COLUMN_MEASUREMENT_BLOODGLUCOSE = "bloodglucose";
-    public static final String COLUMN_MEASUREMENT_DBP = "dBP";
-    public static final String COLUMN_MEASUREMENT_SBP = "sBP";
+    public static final String COLUMN_MEASUREMENT_DBP = "dbp";
+    public static final String COLUMN_MEASUREMENT_SBP = "sbp";
     public static final String COLUMN_MEASUREMENT_COMMENTS = "comment";
     public static final String COLUMN_MEASUREMENT_DATE = "date";
 
@@ -57,8 +58,10 @@ public class TeleCareDbOpenHelper extends SQLiteOpenHelper {
                     COLUMN_MEASUREMENT_SBP + " TEXT " +
                     COLUMN_MEASUREMENT_COMMENTS + " TEXT " +
                     COLUMN_MEASUREMENT_DATE + " TEXT " +
+                    COLUMN_MEASUREMENT_USER_ID + " INTEGER  " +
+                    " FOREIGN KEY " + COLUMN_MEASUREMENT_USER_ID +
+                    " REFERENCES " + TABLE_USER + "(" + COLUMN_USER_ID + ")" +
                     ")";
-
 
     //Constructors
     public TeleCareDbOpenHelper(Context context) {
