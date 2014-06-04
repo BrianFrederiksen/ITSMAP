@@ -1,6 +1,5 @@
 package dk.iha.itsmap.grp11662.telecare.app.fragment;
 
-import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,7 +9,6 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import dk.iha.itsmap.grp11662.telecare.app.MainActivity;
 import dk.iha.itsmap.grp11662.telecare.app.R;
 import dk.iha.itsmap.grp11662.telecare.app.model.Measurement;
 
@@ -18,14 +16,14 @@ import dk.iha.itsmap.grp11662.telecare.app.model.Measurement;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link NewMeasurement.OnFragmentInteractionListener} interface
+ * {@link MeasurementListItemFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link NewMeasurement#newInstance} factory method to
+ * Use the {@link MeasurementListItemFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class NewMeasurement extends Fragment {
+public class MeasurementListItemFragment extends Fragment {
 
-    public NewMeasurement() {
+    public MeasurementListItemFragment() {
     }//Constructor must remain empty because its a fragment
 
     @Override
