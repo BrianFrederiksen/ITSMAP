@@ -1,0 +1,83 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="dk.iha.itsmap.grp11662.telecare.app.fragment.RegisterFragment"
+    android:orientation="vertical">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:singleLine="true"
+        android:inputType="textEmailAddress"
+        android:id="@+id/edit_register_email"
+        android:hint="Email"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:singleLine="true"
+        android:inputType="textPassword"
+        android:id="@+id/edit_register_password"
+        android:hint="Password"
+       />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:singleLine="true"
+        android:id="@+id/edit_register_firstname"
+        android:hint="Firstname"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:singleLine="true"
+        android:id="@+id/edit_register_surname"
+        android:hint="Surname"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:singleLine="true"
+        android:id="@+id/edit_register_doctor"
+        android:hint="Doctor"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:singleLine="true"
+        android:id="@+id/edit_register_sipaddress"
+        android:hint="Sip Address"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
+
+        <Button
+            style="?android:textAppearanceSmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Save and Register"
+            android:textStyle="bold"
+            android:id="@+id/button_register_save"
+            android:layout_weight="1" />
+
+        <Button
+            style="?android:textAppearanceSmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cancel"
+            android:textStyle="bold"
+            android:id="@+id/button_register_cancel"
+            android:layout_weight="1" />
+     </LinearLayout>
+</LinearLayout>

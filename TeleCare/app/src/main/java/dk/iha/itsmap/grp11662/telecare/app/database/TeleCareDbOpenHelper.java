@@ -45,7 +45,7 @@ public class TeleCareDbOpenHelper extends SQLiteOpenHelper {
                     COLUMN_FIRSTNAME + " TEXT, " +
                     COLUMN_SURNAME + " TEXT, " +
                     COLUMN_SIPDOMAIN + " TEXT, " +
-                    COLUMN_DOCTORUSERNAME + " TEXT, " +
+                    COLUMN_DOCTORUSERNAME + " TEXT " +
                     ")";
 
     private static final String TABLE_CREATE_MEASUREMENT =
@@ -58,9 +58,9 @@ public class TeleCareDbOpenHelper extends SQLiteOpenHelper {
                     COLUMN_MEASUREMENT_SBP + " TEXT, " +
                     COLUMN_MEASUREMENT_COMMENTS + " TEXT, " +
                     COLUMN_MEASUREMENT_DATE + " TEXT, " +
-                    COLUMN_MEASUREMENT_USER_ID + " INTEGER,  " +
+                    COLUMN_MEASUREMENT_USER_ID + " INTEGER, " +
                     " FOREIGN KEY " + COLUMN_MEASUREMENT_USER_ID +
-                    " REFERENCES " + TABLE_USER + "(" + COLUMN_USER_ID + ")" +
+                    " REFERENCES " + TABLE_USER + " (" + COLUMN_USER_ID + ")" +
                     ")";
 
     //Constructors

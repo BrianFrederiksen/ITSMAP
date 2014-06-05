@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 import dk.iha.itsmap.grp11662.telecare.app.fragment.CallFragment;
+import dk.iha.itsmap.grp11662.telecare.app.fragment.DashboardFragment;
 import dk.iha.itsmap.grp11662.telecare.app.fragment.MeasurementsFragment;
 import dk.iha.itsmap.grp11662.telecare.app.model.Measurement;
 import dk.iha.itsmap.grp11662.telecare.app.model.User;
@@ -50,7 +51,8 @@ public class MainActivity extends Activity
         mTitle = getTitle();
 
         //Instantiate currenUser, just mocking
-        mUser = new User("patient", "Patient","Much Sick", "1337",new ArrayList<Measurement>(), "192.168.1.30", "sip:shiphter@192.168.1.30");
+
+        mUser = (User) getIntent().getExtras().get("user");
 
         // Set up the drawer.
         mNavigationDrawerFragment.setUp(

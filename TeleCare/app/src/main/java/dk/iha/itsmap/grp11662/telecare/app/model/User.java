@@ -95,12 +95,13 @@ public class User implements Parcelable, Serializable {
     public User(Parcel in) {
         String[] userData = new String[7];
         in.readStringArray(userData);
-        this.username = userData[0];
-        this.password = userData[1];
-        this.firstname = userData[2];
-        this.surname = userData[3];
-        this.sipDomain = userData[4];
-        this.doctorUsername = userData[5];
+        this.id = Long.parseLong(userData[0]);
+        this.username = userData[1];
+        this.password = userData[2];
+        this.firstname = userData[3];
+        this.surname = userData[4];
+        this.sipDomain = userData[5];
+        this.doctorUsername = userData[6];
     }
 
     //methods
@@ -121,11 +122,11 @@ public class User implements Parcelable, Serializable {
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeStringArray(new String[]{this.username, this.password,
+        parcel.writeStringArray(new String[]{this.id.toString(), this.username, this.password,
                 this.firstname, this.surname, this.sipDomain, this.doctorUsername});
     }
 
-    public static final Parcelable.Creator<User> USER_CREATOR = new Parcelable.Creator<User>() {
+    public static final Parcelable.Creator<User> CREATOR = new Parcelable.Creator<User>() {
         public User createFromParcel(Parcel in) {
             return new User(in);
         }

@@ -64,17 +64,19 @@ public class TeleCareDataSource {
     //User handling
     public User Login(String username, String password){
         User user = new User();
-        Cursor cursor = database.rawQuery("SELECT * FROM" +
+        Cursor cursor = database.rawQuery("SELECT * FROM " +
                         TeleCareDbOpenHelper.TABLE_USER +
-                        "WHERE username=? AND password=?",
+                        " WHERE username=? AND password=?",
                 new String[]{username,password});
+
+        cursor.moveToFirst();
         if(cursor != null){
             if(cursor.getCount() > 0 ){
                 user.setId(cursor.getLong(cursor.getColumnIndex(TeleCareDbOpenHelper.COLUMN_USER_ID)));
                 user.setUsername(cursor.getString(cursor.getColumnIndex(TeleCareDbOpenHelper.COLUMN_USERNAME)));
                 user.setPassword(cursor.getString(cursor.getColumnIndex(TeleCareDbOpenHelper.COLUMN_PASSWORD)));
                 user.setFirstname(cursor.getString(cursor.getColumnIndex(TeleCareDbOpenHelper.COLUMN_FIRSTNAME)));
-                user.setSurname(cursor.getString(cursor.getColumnIndex(TeleCareDbOpenHelper.COLUMN_FIRSTNAME)));
+                user.setSurname(cursor.getString(cursor.getColumnIndex(TeleCareDbOpenHelper.COLUMN_SURNAME)));
                 user.setSipDomain(cursor.getString(cursor.getColumnIndex(TeleCareDbOpenHelper.COLUMN_SIPDOMAIN)));
                 user.setDoctorUsername(cursor.getString(cursor.getColumnIndex(TeleCareDbOpenHelper.COLUMN_DOCTORUSERNAME)));
                 return user;

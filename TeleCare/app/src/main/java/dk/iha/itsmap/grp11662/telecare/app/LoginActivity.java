@@ -4,11 +4,8 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.LoaderManager.LoaderCallbacks;
-import android.content.ContentResolver;
 import android.content.CursorLoader;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
@@ -18,29 +15,29 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
-import android.text.Editable;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.Window;
 import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ScrollView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import dk.iha.itsmap.grp11662.telecare.app.database.TeleCareDataSource;
+import dk.iha.itsmap.grp11662.telecare.app.fragment.RegisterFragment;
 import dk.iha.itsmap.grp11662.telecare.app.model.User;
 
 
 /**
  * A login screen that offers login via email/password.
-
  */
 public class LoginActivity extends Activity implements LoaderCallbacks<Cursor>{
 
@@ -58,6 +55,10 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor>{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
+        getActionBar().hide();
+
         setContentView(R.layout.activity_login);
 
         // Set up the login form.
@@ -81,6 +82,18 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor>{
             @Override
             public void onClick(View view) {
                 attemptLogin();
+            }
+        });
+
+        Button mRegisterButton = (Button) findViewById(R.id.button_register);
+        mRegisterButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                ScrollView scrollView = (ScrollView) findViewById(R.id.login_form);
+                scrollView.removeAllViews();
+
+                getFragmentManager().beginTransaction().replace(R.id.login_form, RegisterFragment.newInstance()).commit();
             }
         });
 
@@ -271,7 +284,6 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor>{
             try {
                 mUser = mDataSource.Login(mEmail, mPassword);
             } catch (Exception e) {
-                Toast.makeText(getApplicationContext(), "Something went wrong", Toast.LENGTH_LONG).show();
                 return false;
             }
 
@@ -290,26 +302,13 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor>{
 
             if (success) {
                 Intent mainIntent = new Intent(getApplicationContext(),MainActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putParcelable("user", mUser);
+                mainIntent.putExtras(bundle);
                 startActivity(mainIntent);
                 finish();
 
             } else {
-                // Set an EditText view to get user input
-                final EditText input = new EditText(getApplicationContext());
-                new AlertDialog.Builder(getApplicationContext())
-                        .setTitle("Update Status")
-                        .setMessage("input here")
-                        .setView(input)
-                        .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int whichButton) {
-                                Editable value = input.getText();
-                            }
-                        }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int whichButton) {
-                        // Do nothing.
-                    }
-                }).show();
-
                 mPasswordView.setError(getString(R.string.error_incorrect_password));
                 mPasswordView.requestFocus();
             }
