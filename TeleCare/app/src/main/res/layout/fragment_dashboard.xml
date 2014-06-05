@@ -18,7 +18,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:background="@android:color/holo_purple"
+        android:background="#ffc43f1a"
         android:visibility="visible"/>
 
 
@@ -44,7 +44,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:background="@android:color/holo_purple"
+        android:background="#ffc43f1a"
         android:visibility="visible"/>
 
     <TextView
