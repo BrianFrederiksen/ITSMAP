@@ -17,12 +17,12 @@
             </intent-filter>
         </activity>
 
-        <!--provider
-            android:name=".content.TeleCareContentProvider"
-            android:authorities="content://dk.iha.itsmap.grp11662.telecare.app.provider/*"
+        <provider
+            android:name="dk.iha.itsmap.grp11662.telecare.app.content.TeleCareContentProvider"
+            android:authorities="dk.iha.itsmap.grp11662.telecare.app.contentprovider"
             android:enabled="true"
             android:exported="true" >
-        </provider-->
+        </provider>
     </application>
 
     <uses-permission android:name="android.permission.USE_SIP" />

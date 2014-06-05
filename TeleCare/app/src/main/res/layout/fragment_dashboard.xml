@@ -1,13 +1,70 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="dk.iha.itsmap.grp11662.telecare.app.DashboardFragment">
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome, User!"
+        android:id="@+id/textWelcome"
+        android:layout_gravity="center_horizontal"
+        android:textAlignment="center"
+        android:textSize="25sp"
+        android:layout_weight="0.5"
+        android:layout_marginTop="10dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@android:color/holo_purple"
+        android:visibility="visible"/>
+
+
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Help - Ask Doctor"
+        android:id="@+id/textHelp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight="0.5" />
 
-</FrameLayout>
+    <dk.iha.itsmap.grp11662.telecare.app.CircularImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:id="@+id/imageview_dash_circular_dr"
+        android:src="@drawable/img_stethoscope"
+        android:layout_gravity="center"
+        android:layout_marginBottom="20dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@android:color/holo_purple"
+        android:visibility="visible"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Measurements - Latest"
+        android:id="@+id/textPresentMeasure"
+        android:layout_marginLeft="15dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight="0.5" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_weight="7"
+        android:id="@+id/dashMeasureContainer"></LinearLayout>
+
+
+</LinearLayout>
