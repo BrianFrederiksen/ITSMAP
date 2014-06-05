@@ -10,6 +10,7 @@ public class Measurement implements Parcelable, Serializable {
 
     //class variables
     private Long id;
+    private Long userId;
     private String weight;
     private String temperature;
     private String bloodGlucose;
@@ -19,12 +20,21 @@ public class Measurement implements Parcelable, Serializable {
     private String date;
 
     //getter and setters
+
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     public String getWeight() {
