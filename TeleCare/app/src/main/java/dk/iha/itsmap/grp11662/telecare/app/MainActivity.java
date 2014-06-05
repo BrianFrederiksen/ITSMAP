@@ -65,9 +65,8 @@ public class MainActivity extends Activity
         FragmentManager fragmentManager = getFragmentManager();
         switch (position){
             case 0:
-
                 fragmentManager.beginTransaction()
-                        .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
+                        .replace(R.id.container, DashboardFragment.newInstance(position + 1))
                         .commit();
                 break;
             case 1:
@@ -80,9 +79,14 @@ public class MainActivity extends Activity
                         .replace(R.id.container, MeasurementsFragment.newInstance(position + 1))
                         .commit();
                 break;
-            default:
+            case 3:
                 fragmentManager.beginTransaction()
                         .replace(R.id.container, CallFragment.newInstance(position + 1))
+                        .commit();
+                break;
+            default:
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
                         .commit();
                 break;
         }
