@@ -210,8 +210,8 @@ public class TeleCareDataSource {
 
     public User findUser(Long id){
         User user = new User();
-        Cursor cursor =  this.database.rawQuery("select * from " +
-                TeleCareDbOpenHelper.TABLE_USER + " where " +
+        Cursor cursor =  this.database.rawQuery("SELECT * FROM " +
+                TeleCareDbOpenHelper.TABLE_USER + " WHERE " +
                 TeleCareDbOpenHelper.COLUMN_USER_ID + "=" + id  , null);
         Log.i(LOG_TAG_DATASOURCE, "Returned: " + cursor.getCount() + " rows");
         while(cursor.moveToNext()) {
