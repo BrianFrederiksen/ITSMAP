@@ -29,9 +29,14 @@
         android:text="Help - Ask Doctor"
         android:id="@+id/textHelp"
         android:layout_marginLeft="15dp"
-        android:layout_marginBottom="5dp"
         android:layout_marginTop="10dp"
         android:layout_weight="0.5" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#ffc43f1a"
+        android:visibility="visible"/>
 
     <dk.iha.itsmap.grp11662.telecare.app.CircularImageView
         android:layout_width="150dp"
@@ -39,6 +44,7 @@
         android:id="@+id/imageview_dash_circular_dr"
         android:src="@drawable/img_stethoscope"
         android:layout_gravity="center"
+        android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp" />
 
     <View
@@ -54,9 +60,14 @@
         android:text="Measurements - Latest"
         android:id="@+id/textPresentMeasure"
         android:layout_marginLeft="15dp"
-        android:layout_marginBottom="5dp"
         android:layout_marginTop="10dp"
         android:layout_weight="0.5" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#ffc43f1a"
+        android:visibility="visible"/>
 
     <LinearLayout
         android:orientation="vertical"
