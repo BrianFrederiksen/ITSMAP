@@ -92,7 +92,8 @@
                         android:layout_marginTop="16dp"
                         android:text="Sign in"
                         android:textStyle="bold"
-                        android:layout_weight="1" />
+                        android:layout_weight="1"
+                        android:textColor="@android:color/white"/>
 
                     <Button
                         style="?android:textAppearanceSmall"
@@ -102,7 +103,8 @@
                         android:layout_marginTop="16dp"
                         android:text="Register"
                         android:textStyle="bold"
-                        android:layout_weight="1" />
+                        android:layout_weight="1"
+                        android:textColor="@android:color/white"/>
                 </LinearLayout>
 
             </LinearLayout>

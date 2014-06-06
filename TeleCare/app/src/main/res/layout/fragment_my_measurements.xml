@@ -1,7 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <ListView xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="fill_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/buttonNewMeasurement"
+        style="?android:textAppearanceSmall"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/lswMeasurements">
+        android:text="New Measurement"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"
+        android:layout_gravity="center_horizontal"/>
+
+    <ListView
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/lswMeasurements"
+        android:paddingBottom="8dp">
     </ListView>
+
+
+</LinearLayout>
 
