@@ -8,6 +8,9 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
+import java.sql.Date;
 import java.util.ArrayList;
 
 import dk.iha.itsmap.grp11662.telecare.app.model.Measurement;
@@ -33,7 +36,6 @@ public class MyMeasurementArrayAdapter extends BaseAdapter {
 
     @Override
     public long getItemId(int i) {
-        //Muligvis skal det være getDescription() i stedet for getID()
         return measurements.get(i).describeContents();
     }
 
@@ -41,13 +43,17 @@ public class MyMeasurementArrayAdapter extends BaseAdapter {
     public View getView(int position, View view, ViewGroup viewGroup) {
         View convertView = view;
         if (view == null) {
-
             convertView = LayoutInflater.from(masterActivity).inflate(R.layout.mymeasurement_listitem,null);
         }
 
-        TextView measurementListItem = (TextView) convertView.findViewById(R.id.txvListItem);
         Measurement measurementToPresentInList = (Measurement)this.getItem(position);
-        measurementListItem.setText(measurementToPresentInList.getWeight());
+
+        TextView measurementListDate = (TextView) convertView.findViewById(R.id.txvListDate);
+        TextView measurementListComment = (TextView) convertView.findViewById(R.id.txvListComments);
+
+        measurementListDate.setText(measurementToPresentInList.getDate());
+        measurementListComment.setText(measurementToPresentInList.getComments());
+
         return convertView;
     }
 }

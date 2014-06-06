@@ -55,6 +55,7 @@ public class MeasurementsFragment extends Fragment {
         Measurement testMeasurement1 = new Measurement("75","38","34","2","1","BAM BAM Comments","4/3-2013");
         Measurement testMeasurement2 = new Measurement("65","28","24","1","0,5","BAM", "5/9 2012");
 
+
         ArrayList<Measurement> measurementsToShowInList = new ArrayList<>();
         measurementsToShowInList.add(testMeasurement1);
         measurementsToShowInList.add(testMeasurement2);
@@ -73,11 +74,12 @@ public class MeasurementsFragment extends Fragment {
                 Measurement measurement = (Measurement) list.getItemAtPosition(i);
 
                 Bundle arguments = new Bundle();
-                arguments.putParcelable("measurements", measurement);
+                arguments.putParcelable("measurement", measurement);
+                MeasurementListItemFragment detailMeasurement = new MeasurementListItemFragment();
+                detailMeasurement.setArguments(arguments);
 
-                MeasurementListItemFragment newMeasurement = new MeasurementListItemFragment();
                 getFragmentManager().beginTransaction()
-                        .replace(R.id.container, newMeasurement).addToBackStack(null)
+                        .replace(R.id.container, detailMeasurement).addToBackStack(null)
                         .commit();
                 /*MyMeasurements myMeasurements = new MyMeasurements();
                 //getFragmentManager().findFragmentById()

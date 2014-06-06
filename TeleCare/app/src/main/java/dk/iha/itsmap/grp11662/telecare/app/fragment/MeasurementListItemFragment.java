@@ -29,7 +29,7 @@ public class MeasurementListItemFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        Measurement measurementToDisplay = new Measurement("75","38","34","2","1","BAM BAM Comments","Date");
+        Measurement measurementToDisplay = (Measurement) getArguments().get("measurement");
 
         View rootView = inflater.inflate(R.layout.fragment_new_measurement, container, false);
         rootView = SetMeasurement(rootView, measurementToDisplay);
