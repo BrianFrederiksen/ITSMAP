@@ -3,6 +3,7 @@ package dk.iha.itsmap.grp11662.telecare.app;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.CursorLoader;
@@ -19,12 +20,15 @@ import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -92,6 +96,10 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor>{
 
                 ScrollView scrollView = (ScrollView) findViewById(R.id.login_form);
                 scrollView.removeAllViews();
+                scrollView.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT, 2.1f));
+
+                ImageView icon = (ImageView) findViewById(R.id.loginIcon);
+                icon.setVisibility(View.GONE);
 
                 getFragmentManager().beginTransaction().replace(R.id.login_form, RegisterFragment.newInstance()).commit();
             }

@@ -38,7 +38,7 @@ public class CircularImageView extends ImageView {
             return;
         }
         Bitmap b =  ((BitmapDrawable)drawable).getBitmap() ;
-        Bitmap bitmap = b.copy(Bitmap.Config.ARGB_8888, true);
+            Bitmap bitmap = b.copy(Bitmap.Config.ARGB_8888, true);
 
         Bitmap roundBitmap =  getCroppedBitmap(bitmap, getWidth());
         canvas.drawBitmap(roundBitmap, 0, 0, null);
