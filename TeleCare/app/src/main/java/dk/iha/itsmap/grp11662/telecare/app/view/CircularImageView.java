@@ -1,4 +1,4 @@
-package dk.iha.itsmap.grp11662.telecare.app;
+package dk.iha.itsmap.grp11662.telecare.app.view;
 
 import android.content.Context;
 import android.graphics.Bitmap;

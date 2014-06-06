@@ -38,7 +38,7 @@
         android:background="#ffc43f1a"
         android:visibility="visible"/>
 
-    <dk.iha.itsmap.grp11662.telecare.app.CircularImageView
+    <dk.iha.itsmap.grp11662.telecare.app.view.CircularImageView
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:id="@+id/imageview_dash_circular_dr"

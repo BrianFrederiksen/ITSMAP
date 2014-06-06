@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import dk.iha.itsmap.grp11662.telecare.app.CircularImageView;
+import dk.iha.itsmap.grp11662.telecare.app.view.CircularImageView;
 import dk.iha.itsmap.grp11662.telecare.app.MainActivity;
 import dk.iha.itsmap.grp11662.telecare.app.R;
 import dk.iha.itsmap.grp11662.telecare.app.model.User;

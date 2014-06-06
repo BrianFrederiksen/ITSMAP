@@ -25,7 +25,7 @@
             android:textSize="25dp"
             android:layout_margin="20dp" />
 
-        <dk.iha.itsmap.grp11662.telecare.app.CircularImageView
+        <dk.iha.itsmap.grp11662.telecare.app.view.CircularImageView
             android:layout_width="300dp"
             android:layout_height="300dp"
             android:id="@+id/imageview_circular_dr"

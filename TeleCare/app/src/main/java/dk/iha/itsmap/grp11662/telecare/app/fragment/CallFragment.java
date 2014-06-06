@@ -13,7 +13,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import dk.iha.itsmap.grp11662.telecare.app.CircularImageView;
+import dk.iha.itsmap.grp11662.telecare.app.view.CircularImageView;
 import dk.iha.itsmap.grp11662.telecare.app.MainActivity;
 import dk.iha.itsmap.grp11662.telecare.app.R;
 import dk.iha.itsmap.grp11662.telecare.app.connectivity.SipHandler;
