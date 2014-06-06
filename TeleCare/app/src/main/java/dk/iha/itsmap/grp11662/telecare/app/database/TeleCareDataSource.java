@@ -148,7 +148,8 @@ public class TeleCareDataSource {
         List<Measurement> measurements = new ArrayList<Measurement>();
         Cursor cursor =  this.database.rawQuery("SELECT * FROM " +
                 TeleCareDbOpenHelper.TABLE_MEASUREMENT + " WHERE " +
-                TeleCareDbOpenHelper.COLUMN_MEASUREMENT_USER_ID + " = " + userId  , null);
+                TeleCareDbOpenHelper.COLUMN_MEASUREMENT_USER_ID + " = " +
+                userId + " ORDER BY " + TeleCareDbOpenHelper.COLUMN_MEASUREMENT_DATE + " ASC " , null);
         Log.i(LOG_TAG_DATASOURCE, "Returned: " + cursor.getCount() + " rows");
         if(cursor.getCount() > 0){
             while (cursor.moveToNext()){
