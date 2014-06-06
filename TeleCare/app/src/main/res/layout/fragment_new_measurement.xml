@@ -239,7 +239,7 @@
                 android:singleLine="true"
                 android:layout_weight="0.75"/>
             <TextView
-                android:id="@+id/detailGlucoseUnit"
+                android:id="@+id/newGlucoseUnit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="mmol/L"
@@ -266,7 +266,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/detailCommentsInfo"
+                android:id="@+id/newCommentsInfo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Comments"
@@ -281,7 +281,7 @@
                 android:background="#ffc43f1a"
                 android:visibility="visible"/>
             <EditText
-                android:id="@+id/detailCommentsValue"
+                android:id="@+id/newCommentsValue"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Insert comments"
