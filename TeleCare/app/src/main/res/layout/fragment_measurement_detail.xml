@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<LinearLayout
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+
+
+
+    <!-- Date -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/detailDateInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Date"
+            android:textSize="20sp"
+            android:gravity="left"
+            android:layout_weight="1"/>
+        <TextView
+            android:id="@+id/detailDateValue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Value"
+            android:textSize="20sp"
+            android:gravity="right"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#ffc43f1a"
+        android:visibility="visible"/>
+
+    <!-- Weight -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/detailWeightInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Weight"
+            android:textSize="20sp"
+            android:gravity="left"
+            android:layout_weight="1"/>
+        <TextView
+            android:id="@+id/detailWeightValue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Value"
+            android:textSize="20sp"
+            android:gravity="right"
+            android:layout_weight="0.5"/>
+        <TextView
+            android:id="@+id/detailWeightUnit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Kg"
+            android:textSize="20sp"
+            android:gravity="left"
+            android:paddingLeft="5dp"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#ffc43f1a"
+        android:visibility="visible"/>
+
+    <!-- Temperature -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/detailTempInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Temperature"
+            android:textSize="20sp"
+            android:gravity="left"
+            android:layout_weight="0.5"/>
+        <TextView
+            android:id="@+id/detailTempValue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Value"
+            android:textSize="20sp"
+            android:gravity="right"
+            android:layout_weight="1"/>
+        <TextView
+            android:id="@+id/detailTempUnit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="°C"
+            android:textSize="20sp"
+            android:gravity="left"
+            android:paddingLeft="5dp"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#ffc43f1a"
+        android:visibility="visible"/>
+
+    <!-- Diastolic -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/detailDbpInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Diastolic"
+            android:textSize="20sp"
+            android:gravity="left"
+            android:layout_weight="0.5"/>
+        <TextView
+            android:id="@+id/detailDbpValue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Value"
+            android:textSize="20sp"
+            android:gravity="right"
+            android:layout_weight="1"/>
+        <TextView
+            android:id="@+id/detailDbpUnit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="mm Hg"
+            android:textSize="16sp"
+            android:gravity="left"
+            android:paddingLeft="5dp"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#ffc43f1a"
+        android:visibility="visible"/>
+
+    <!-- Systolic -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/detailSbpInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Systolic"
+            android:textSize="20sp"
+            android:gravity="left"
+            android:layout_weight="0.5"/>
+        <TextView
+            android:id="@+id/detailSbpValue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Value"
+            android:textSize="20sp"
+            android:gravity="right"
+            android:layout_weight="1"/>
+        <TextView
+            android:id="@+id/detailSbpUnit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="mm Hg"
+            android:textSize="16sp"
+            android:gravity="left"
+            android:paddingLeft="5dp"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#ffc43f1a"
+        android:visibility="visible"/>
+
+    <!-- Glucose -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/detailGlucoseInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Glucose"
+            android:textSize="20sp"
+            android:gravity="left"
+            android:layout_weight="0.5"/>
+        <TextView
+            android:id="@+id/detailGlucoseValue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Value"
+            android:textSize="20sp"
+            android:gravity="right"
+            android:layout_weight="1"/>
+        <TextView
+            android:id="@+id/detailGlucoseUnit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="mmol/L"
+            android:textSize="16sp"
+            android:gravity="left"
+            android:paddingLeft="5dp"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#ffc43f1a"
+        android:visibility="visible"/>
+
+    <!-- Comments -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="16dp"
+        android:paddingLeft="32dp"
+        android:paddingRight="32dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/detailCommentsInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Comments"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:textAlignment="center"
+
+            android:layout_weight="0.5"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#ffc43f1a"
+            android:visibility="visible"/>
+        <TextView
+            android:id="@+id/detailCommentsValue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Value"
+            android:textSize="16sp"
+            android:gravity="left"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#ffc43f1a"
+            android:visibility="visible"/>
+    </LinearLayout>
+
+
+
+</LinearLayout>
+</ScrollView>
