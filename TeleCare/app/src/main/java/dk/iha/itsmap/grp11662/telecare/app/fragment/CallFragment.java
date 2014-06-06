@@ -17,6 +17,7 @@ import dk.iha.itsmap.grp11662.telecare.app.CircularImageView;
 import dk.iha.itsmap.grp11662.telecare.app.MainActivity;
 import dk.iha.itsmap.grp11662.telecare.app.R;
 import dk.iha.itsmap.grp11662.telecare.app.connectivity.SipHandler;
+import dk.iha.itsmap.grp11662.telecare.app.model.User;
 
 public class CallFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -135,7 +136,10 @@ public class CallFragment extends Fragment {
             public void onClick(View v) {
                 if(!isCallActive) {
                     try{
-                        mAudioCall = sipHandler.MakeAudioCall(mainActivity.getUser().getDoctorUsername(), 30, mAudioCallListener);
+                        User user = mainActivity.getUser();
+                        String doctorSipAddress = "sip:" + user.getDoctorUsername()
+                                + "@" + user.getSipDomain();
+                        mAudioCall = sipHandler.MakeAudioCall(doctorSipAddress, 30, mAudioCallListener);
                         isCallActive = true;
 
                         fadeInCall();

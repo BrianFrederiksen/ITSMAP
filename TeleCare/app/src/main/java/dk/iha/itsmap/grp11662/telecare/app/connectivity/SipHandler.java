@@ -29,7 +29,8 @@ public class SipHandler {
     public SipHandler(Context context, User user) {
         mContext = context;
         try {
-            setupSipProfile(user.getUsername(), user.getPassword(), user.getSipDomain());
+            String userName = user.getUsername().split("@")[0];
+            setupSipProfile(userName, user.getPassword(), user.getSipDomain());
             setupSipManager();
         } catch(Exception e) {
             Log.e(LOG_TAG, "Exception occured: " + e.getMessage());
