@@ -16,14 +16,14 @@ import dk.iha.itsmap.grp11662.telecare.app.model.Measurement;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link MeasurementListItemFragment.OnFragmentInteractionListener} interface
+ * {@link MeasurementDetailFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link MeasurementListItemFragment#newInstance} factory method to
+ * Use the {@link MeasurementDetailFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MeasurementListItemFragment extends Fragment {
+public class MeasurementDetailFragment extends Fragment {
 
-    public MeasurementListItemFragment() {
+    public MeasurementDetailFragment() {
     }//Constructor must remain empty because its a fragment
 
     @Override
@@ -31,7 +31,7 @@ public class MeasurementListItemFragment extends Fragment {
                              Bundle savedInstanceState) {
         Measurement measurementToDisplay = (Measurement) getArguments().get("measurement");
 
-        View rootView = inflater.inflate(R.layout.fragment_new_measurement, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_measurement_detail, container, false);
         rootView = SetMeasurement(rootView, measurementToDisplay);
 
         return rootView;
@@ -39,13 +39,13 @@ public class MeasurementListItemFragment extends Fragment {
 
     public View SetMeasurement(View view, Measurement measurementToDisplay){
 
-        ((EditText)view.findViewById(R.id.etxWeight)).setText(measurementToDisplay.getWeight());
-        ((EditText)view.findViewById(R.id.etxTemp)).setText(measurementToDisplay.getTemperature());
-        ((EditText)view.findViewById(R.id.etxDBP)).setText(measurementToDisplay.getdBP());
-        ((EditText)view.findViewById(R.id.etxSBP)).setText(measurementToDisplay.getsBP());
-        ((EditText)view.findViewById(R.id.etxGlucose)).setText(measurementToDisplay.getBloodGlucose());
-        ((EditText)view.findViewById(R.id.etxComments)).setText(measurementToDisplay.getComments());
-        ((EditText)view.findViewById(R.id.etxDate)).setText(measurementToDisplay.getDate());
+        ((TextView)view.findViewById(R.id.detailWeightValue)).setText(measurementToDisplay.getWeight());
+        ((TextView)view.findViewById(R.id.detailTempValue)).setText(measurementToDisplay.getTemperature());
+        ((TextView)view.findViewById(R.id.detailDbpValue)).setText(measurementToDisplay.getdBP());
+        ((TextView)view.findViewById(R.id.detailSbpValue)).setText(measurementToDisplay.getsBP());
+        ((TextView)view.findViewById(R.id.detailGlucoseValue)).setText(measurementToDisplay.getBloodGlucose());
+        ((TextView)view.findViewById(R.id.detailCommentsValue)).setText(measurementToDisplay.getComments());
+        ((TextView)view.findViewById(R.id.detailDateValue)).setText(measurementToDisplay.getDate());
         return view;
     }
 

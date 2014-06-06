@@ -80,7 +80,7 @@ public class MeasurementsFragment extends Fragment {
 
                 Bundle arguments = new Bundle();
                 arguments.putParcelable("measurement", measurement);
-                MeasurementListItemFragment detailMeasurement = new MeasurementListItemFragment();
+                MeasurementDetailFragment detailMeasurement = new MeasurementDetailFragment();
                 detailMeasurement.setArguments(arguments);
 
                 getFragmentManager().beginTransaction()
