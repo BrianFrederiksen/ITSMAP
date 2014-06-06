@@ -1,194 +1,303 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="dk.iha.itsmap.grp11662.telecare.app.fragment.MeasurementDetailFragment">
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:orientation="vertical"
-        android:layout_margin="5sp">
 
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
-            <TextView
-                android:id="@+id/txvWeight"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:layout_centerVertical="true"
-                android:text="Weight" />
+
+
+        <!-- Date -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
 
             <TextView
-                android:id="@+id/txvWeightUnit"
-                android:layout_width="wrap_content"
+                android:id="@+id/newDateInfo"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="40sp"
-                android:text="kg" />
-            <EditText
-                android:id="@+id/etxWeight"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:inputType="number"
-                android:layout_toLeftOf="@id/txvWeightUnit"
-                android:hint="Type Weight"
-                android:gravity="right"/>
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
+                android:text="Date"
+                android:textSize="20sp"
+                android:gravity="left"
+                android:layout_weight="1"/>
             <TextView
-                android:id="@+id/txvTemp"
-                android:layout_width="wrap_content"
+                android:id="@+id/newDateValue"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:layout_centerVertical="true"
-                android:text="Temperature" />
-
-            <TextView
-                android:id="@+id/txvCelcius"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="40sp"
-                android:text="\u2103" />
-            <EditText
-                android:id="@+id/etxTemp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:inputType="number"
-                android:layout_toLeftOf="@id/txvCelcius"
-                android:hint="Type Temperature"
-                android:gravity="right"/>
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
-            <TextView
-                android:id="@+id/txvDBPs"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:layout_centerVertical="true"
-                android:text="DBP" />
-
-            <TextView
-                android:id="@+id/txvDBP"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:text="mm Hg" />
-            <EditText
-                android:id="@+id/etxDBP"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:inputType="number"
-                android:layout_toLeftOf="@id/txvDBP"
-                android:hint="Type DBP"
-                android:gravity="right"/>
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
-            <TextView
-                android:id="@+id/txvSBPs"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:layout_centerVertical="true"
-                android:text="SBP" />
-
-            <TextView
-                android:id="@+id/txvSBP"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:text="mm HG" />
-            <EditText
-                android:id="@+id/etxSBP"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:inputType="number"
-                android:layout_toLeftOf="@id/txvSBP"
-                android:hint="Type SBP"
-                android:gravity="right"/>
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
-            <TextView
-                android:id="@+id/txvGlucoseRow"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:layout_centerVertical="true"
-                android:text="Glucose" />
-
-            <TextView
-                android:id="@+id/txvGlucose"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:text="m mol/l" />
-            <EditText
-                android:id="@+id/etxGlucose"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:inputType="number"
-                android:layout_toLeftOf="@id/txvGlucose"
+                android:text="Value"
+                android:textSize="20sp"
                 android:gravity="right"
-                android:hint="Type Glucose level"/>
-        </RelativeLayout>
+                android:layout_weight="1"/>
 
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#ffc43f1a"
+            android:visibility="visible"/>
+
+        <!-- Weight -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
             <TextView
-                android:id="@+id/txvDateRow"
-                android:layout_width="wrap_content"
+                android:id="@+id/newWeightInfo"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:layout_centerVertical="true"
-                android:text="Date" />
-
+                android:text="Weight"
+                android:textSize="20sp"
+                android:gravity="left"
+                android:layout_weight="0.75"/>
             <EditText
-                android:id="@+id/etxDate"
-                android:layout_width="wrap_content"
+                android:id="@+id/newWeightValue"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="date"
-                android:layout_alignParentRight="true"
-                android:layout_marginEnd="65sp"
+                android:textSize="20sp"
+                android:hint="Insert value"
+                android:textStyle="italic"
                 android:gravity="right"
-                android:hint="Type Date"/>
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
-
-            <EditText
-                android:id="@+id/etxComments"
-                android:layout_width="wrap_content"
+                android:inputType="numberDecimal"
+                android:singleLine="true"
+                android:layout_weight="0.75"/>
+            <TextView
+                android:id="@+id/newWeightUnit"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Comment"/>
-        </RelativeLayout>
+                android:text="Kg"
+                android:textSize="20sp"
+                android:gravity="left"
+                android:paddingLeft="5dp"
+                android:layout_weight="1"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#ffc43f1a"
+            android:visibility="visible"/>
+
+        <!-- Temperature -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/newTempInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Temperature"
+                android:textSize="20sp"
+                android:gravity="left"
+                android:layout_weight="0.75"/>
+            <EditText
+                android:id="@+id/newTempValue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Insert value"
+                android:textStyle="italic"
+                android:textSize="20sp"
+                android:gravity="right"
+                android:inputType="numberDecimal"
+                android:singleLine="true"
+                android:layout_weight="0.75"/>
+            <TextView
+                android:id="@+id/newTempUnit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="°C"
+                android:textSize="20sp"
+                android:gravity="left"
+                android:paddingLeft="5dp"
+                android:layout_weight="1"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#ffc43f1a"
+            android:visibility="visible"/>
+
+        <!-- Diastolic -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/newDbpInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Diastolic"
+                android:textSize="20sp"
+                android:gravity="left"
+                android:layout_weight="0.75"/>
+            <EditText
+                android:id="@+id/newDbpValue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Insert value"
+                android:textStyle="italic"
+                android:textSize="20sp"
+                android:gravity="right"
+                android:inputType="numberDecimal"
+                android:singleLine="true"
+                android:layout_weight="0.75"/>
+            <TextView
+                android:id="@+id/newDbpUnit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="mm Hg"
+                android:textSize="16sp"
+                android:gravity="left"
+                android:paddingLeft="5dp"
+                android:layout_weight="1"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#ffc43f1a"
+            android:visibility="visible"/>
+
+        <!-- Systolic -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/newSbpInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Systolic"
+                android:textSize="20sp"
+                android:gravity="left"
+                android:layout_weight="0.75"/>
+            <EditText
+                android:id="@+id/newSbpValue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Insert value"
+                android:textStyle="italic"
+                android:textSize="20sp"
+                android:gravity="right"
+                android:inputType="numberDecimal"
+                android:singleLine="true"
+                android:layout_weight="0.75"/>
+            <TextView
+                android:id="@+id/newSbpUnit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="mm Hg"
+                android:textSize="16sp"
+                android:gravity="left"
+                android:paddingLeft="5dp"
+                android:layout_weight="1"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#ffc43f1a"
+            android:visibility="visible"/>
+
+        <!-- Glucose -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/newGlucoseInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Glucose"
+                android:textSize="20sp"
+                android:gravity="left"
+                android:layout_weight="0.75"/>
+            <EditText
+                android:id="@+id/newGlucoseValue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Insert value"
+                android:textStyle="italic"
+                android:textSize="20sp"
+                android:gravity="right"
+                android:inputType="numberDecimal"
+                android:singleLine="true"
+                android:layout_weight="0.75"/>
+            <TextView
+                android:id="@+id/detailGlucoseUnit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="mmol/L"
+                android:textSize="16sp"
+                android:gravity="left"
+                android:paddingLeft="5dp"
+                android:layout_weight="1"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#ffc43f1a"
+            android:visibility="visible"/>
+
+        <!-- Comments -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="16dp"
+            android:paddingLeft="32dp"
+            android:paddingRight="32dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/detailCommentsInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Comments"
+                android:textSize="20sp"
+                android:gravity="center"
+                android:textAlignment="center"
+
+                android:layout_weight="0.5"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="#ffc43f1a"
+                android:visibility="visible"/>
+            <EditText
+                android:id="@+id/detailCommentsValue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Insert comments"
+                android:textStyle="italic"
+                android:textSize="16sp"
+                android:gravity="left"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="#ffc43f1a"
+                android:visibility="visible"/>
+        </LinearLayout>
+
+
 
     </LinearLayout>
-</FrameLayout>
+</ScrollView>
