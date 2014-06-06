@@ -2,6 +2,7 @@ package dk.iha.itsmap.grp11662.telecare.app.fragment;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,7 +18,10 @@ import java.util.ArrayList;
 import dk.iha.itsmap.grp11662.telecare.app.MainActivity;
 import dk.iha.itsmap.grp11662.telecare.app.MyMeasurementArrayAdapter;
 import dk.iha.itsmap.grp11662.telecare.app.R;
+import dk.iha.itsmap.grp11662.telecare.app.database.TeleCareDataSource;
+import dk.iha.itsmap.grp11662.telecare.app.database.TeleCareDbOpenHelper;
 import dk.iha.itsmap.grp11662.telecare.app.model.Measurement;
+import dk.iha.itsmap.grp11662.telecare.app.model.User;
 
 
 public class MeasurementsFragment extends Fragment {
@@ -25,6 +29,10 @@ public class MeasurementsFragment extends Fragment {
     private static final String ARG_SECTION_NUMBER = "section_number";
     private int mSectionNumber;
     ArrayList<Measurement> measurements;
+    TeleCareDbOpenHelper dbHelper;
+    TeleCareDataSource datasource;
+    User currentUser;
+    Context context;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -51,17 +59,14 @@ public class MeasurementsFragment extends Fragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_my_measurements, null);
 
-        //Should be done outside this class
-        Measurement testMeasurement1 = new Measurement("75","38","34","2","1","BAM BAM Comments","4/3-2013");
-        Measurement testMeasurement2 = new Measurement("65","28","24","1","0,5","BAM", "5/9 2012");
-
-
-        ArrayList<Measurement> measurementsToShowInList = new ArrayList<>();
-        measurementsToShowInList.add(testMeasurement1);
-        measurementsToShowInList.add(testMeasurement2);
-        //Endof Should be done outside tis class
-
-        PutMeasurements(measurementsToShowInList);
+        // Getting user measurements
+        context = getActivity().getApplicationContext();
+        dbHelper = new TeleCareDbOpenHelper(context);
+        datasource = new TeleCareDataSource(context);
+        datasource.Open();
+        MainActivity mainActivity = (MainActivity) getActivity();
+        currentUser = mainActivity.getUser();
+        measurements = datasource.findAllUserMeasurements(currentUser.getId());
 
         final ListView list =(ListView)v.findViewById(R.id.lswMeasurements);
 
@@ -95,10 +100,6 @@ public class MeasurementsFragment extends Fragment {
         super.onAttach(activity);
         ((MainActivity) activity).onSectionAttached(
                 getArguments().getInt(ARG_SECTION_NUMBER));
-    }
-
-    public void PutMeasurements(ArrayList<Measurement> measurementItems){
-        measurements = measurementItems;
     }
 
     public LinearLayout CreateLinearLayout(){

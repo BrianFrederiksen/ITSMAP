@@ -121,8 +121,8 @@ public class TeleCareDataSource {
     }
 
     //find methods
-    public List<Measurement> findAllMeasurements(){
-        List<Measurement> measurements = new ArrayList<Measurement>();
+    public ArrayList<Measurement> findAllMeasurements(){
+        ArrayList<Measurement> measurements = new ArrayList<Measurement>();
         Cursor cursor = database.query(TeleCareDbOpenHelper.TABLE_MEASUREMENT, mMeasurementColumns,
                 null,null,null,null,null );
         Log.i(LOG_TAG_DATASOURCE, "Returned: " + cursor.getCount() + " rows");
@@ -144,8 +144,8 @@ public class TeleCareDataSource {
         return measurements;
     }
 
-    public List<Measurement> findAllUserMeasurements(Long userId){
-        List<Measurement> measurements = new ArrayList<Measurement>();
+    public ArrayList<Measurement> findAllUserMeasurements(Long userId){
+        ArrayList<Measurement> measurements = new ArrayList<Measurement>();
         Cursor cursor =  this.database.rawQuery("SELECT * FROM " +
                 TeleCareDbOpenHelper.TABLE_MEASUREMENT + " WHERE " +
                 TeleCareDbOpenHelper.COLUMN_MEASUREMENT_USER_ID + " = " +
@@ -170,8 +170,8 @@ public class TeleCareDataSource {
     }
 
 
-    public List<User> findAllUsers(){
-        List<User> users = new ArrayList<User>();
+    public ArrayList<User> findAllUsers(){
+        ArrayList<User> users = new ArrayList<User>();
         Cursor cursor = database.query(TeleCareDbOpenHelper.TABLE_USER, mUserColumns,
                 null,null,null,null,null );
         Log.i(LOG_TAG_DATASOURCE, "Returned: " + cursor.getCount() + " rows");
