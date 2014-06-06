@@ -317,7 +317,7 @@
 
             <Button
                 style="?android:textAppearanceSmall"
-                android:id="@+id/button_register"
+                android:id="@+id/discardNewMeasurement"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"

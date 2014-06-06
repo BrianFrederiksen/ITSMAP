@@ -3,18 +3,20 @@ package dk.iha.itsmap.grp11662.telecare.app.fragment;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-
 import java.util.ArrayList;
 
+import dk.iha.itsmap.grp11662.telecare.app.LoginActivity;
 import dk.iha.itsmap.grp11662.telecare.app.MainActivity;
 import dk.iha.itsmap.grp11662.telecare.app.MyMeasurementArrayAdapter;
 import dk.iha.itsmap.grp11662.telecare.app.R;
@@ -92,14 +94,16 @@ public class MeasurementsFragment extends Fragment {
                 getFragmentManager().beginTransaction().add(R.id.container, newMeasurement);*/
             }
         });
-        return v;
-    }
 
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        ((MainActivity) activity).onSectionAttached(
-                getArguments().getInt(ARG_SECTION_NUMBER));
+        Button buttonNewMeasurement = (Button) v.findViewById(R.id.buttonNewMeasurement);
+        buttonNewMeasurement.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFragmentManager().beginTransaction().replace(R.id.container,new NewMeasurementFragment()).commit();
+            }
+        });
+
+        return v;
     }
 
     public LinearLayout CreateLinearLayout(){
