@@ -12,12 +12,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.ArrayList;
-
 import dk.iha.itsmap.grp11662.telecare.app.fragment.CallFragment;
 import dk.iha.itsmap.grp11662.telecare.app.fragment.DashboardFragment;
 import dk.iha.itsmap.grp11662.telecare.app.fragment.MeasurementsFragment;
-import dk.iha.itsmap.grp11662.telecare.app.model.Measurement;
+import dk.iha.itsmap.grp11662.telecare.app.fragment.NavigationDrawerFragment;
 import dk.iha.itsmap.grp11662.telecare.app.model.User;
 
 
